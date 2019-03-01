@@ -1,3 +1,17 @@
 body {
-  padding-top: 70px;
+  padding-top: 000px;
+}
+
+#headerText {
+  font-size: 18px;
+  color: white;
+}
+
+#headerTitle {
+  font-size: 80px;
+  color: white;
+}
+
+#masthead {
+  background-color: #0950c1;
 }
