@@ -1,7 +1,3 @@
-body {
-  padding-top: 000px;
-}
-
 #headerText {
   font-size: 18px;
   color: white;
@@ -13,5 +9,16 @@ body {
 }
 
 #masthead {
-  background-color: #0950c1;
+  background-color: #3d6fbf;
+}
+
+#AddEvent {
+  display: none;
+}
+
+.CreatedEvent {
+  color: black;
+  background-color: #efefef;
+  border-style: solid;
+  font-size: 20px;
 }
