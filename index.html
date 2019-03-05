@@ -12,57 +12,56 @@
   <!--Other CSS-->
   <link rel="stylesheet" type="text/css" href="styles.css">
 
-  <title> SiteName </title>
+  <title> Janus </title>
 
+  <script src="index.js"></script>
 </head>
 
 <body>
 
   <div id="masthead">
-    <center>
-      <a class="navbar-brand" href="#" id="headerTitle">SiteName</a>
-    </center>
+      <a class="navbar-brand" href="#" id="headerTitle"><img src="IMG_3383.png" id="logo"></a>
   </div>
 
-  <nav class="navbar sticky-top navbar-dark" style="background-color:#3d6fbf">
-    <p id="headerText"> Search by Event or Host </p>
+  <nav class="navbar sticky-top navbar-dark" style="background-color:#242526">
+    <div class="col-sm-8" id="headLeft">
+      <input type="text" placeholder="Search by Employer or Job..." id="headSearch">
+    </div>
+    <div class="col-sm-4" id="headRight">
+      <button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob');">Post a Job</button>
+    </div>
 
-
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search here...">
-      <div class="input-group-append">
-        <button class="btn btn-secondary" type="button" id="searchHosts">
-
-            <i class="fa fa-search">Hosts</i>
-
-          </button>
-        <button class="btn btn-secondary" type="button" id="searchEvents">
-
-            <i class="fa fa-search">Events</i>
-
-          </button>
-      </div>
+    <div id="postJob">
+      <br>
+        <input type="text" placeholder="Enter an Employer..." class="headInput">
+        <input type="text" placeholder="Enter a Job Title..." class="headInput"> <br> <br>
+        <textarea name="jobDescription" rows="8" cols="80" placeholder="Enter Job Description Here..."></textarea>
     </div>
   </nav>
-  <div id="masthead">
-    <center>
-      <button type="button" id="toggleAdd" class="btn btn-secondary" onclick="toggle_div('AddEvent');"> Create Your Own Event! </button>
-      <br> <br>
-    </center>
 
-    <div id="AddEvent">
-      <form id="addEvent">
-        <input type="text" placeholder="Host..." class="form-control" id="host">
-        <input type="text" placeholder="Event..." class="form-control">
-        <center>
-          <button type="button" class="btn btn-secondary" onclick="CreateEvent()"> Submit </button>
-        </center>
-        <br>
-      </form>
-    </div>
-
-  </div>
-  <br>
+  <p> First Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
+  <p> Some Text </p>
 
   <!--jQuery, Popper.js, and Bootstrap JS-->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
