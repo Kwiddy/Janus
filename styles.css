@@ -4,21 +4,36 @@
 }
 
 #headerTitle {
-  font-size: 80px;
+  padding: 10px;
+  font-size: 30px;
   color: white;
+  text-align: left;
 }
 
 #masthead {
-  background-color: #3d6fbf;
+  background-color: #242526;
+  width: 100%;
 }
 
-#AddEvent {
+#logo {
+  width: 140px;
+  height: 60px;
+}
+
+#headRight {
+  text-align: right;
+  width: 10%;
+}
+
+#headSearch {
+  width: 100%;
+}
+
+#postJob {
   display: none;
+  color: white;
 }
 
-.CreatedEvent {
-  color: black;
-  background-color: #efefef;
-  border-style: solid;
-  font-size: 20px;
+.headInput {
+  width: 49%;
 }
