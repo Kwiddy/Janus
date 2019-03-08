@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!--Other CSS-->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <title> Janus </title>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+  <script src="index.js"></script>
+
+</head>
+
+<body onload="startFunct()">
+
+  <div id="masthead">
+    <center>
+      <a class="navbar-brand" href="#" id="headerTitle"><img src="IMG_3383.png" id="logo"></a>
+    </center>
+  </div>
+
+  <nav class="navbar sticky-top navbar-dark" style="background-color:#242526">
+    <div class="col-sm-9" id="headLeft">
+      <input type="text" placeholder="Search by Employer or Job..." id="headSearch">
+    </div>
+    <div class="col-sm-3" id="headRight">
+      <center>
+        <button type="button" class="btn btn-dark">Search All</button>
+        <button type="button" class="btn btn-dark">My Account</button>
+        <button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob');">Post a Job</button>
+      </center>
+    </div>
+  </nav>
+
+  <center>
+    <form action="./add" method="post">
+      <div id="postJob">
+          <input type="text" placeholder="Enter an Employer..." class="headInput" id="addEmpl">
+          <input type="text" placeholder="Enter a Job Title..." class="headInput" id="addJob"> <br>
+          <!--<textarea name="jobDescription" rows="8" cols="80" placeholder="Enter Job Description Here..."></textarea>-->
+          <!--<button type="button" class="btn btn-dark" onclick="submitNew()" id="submitBut">Submit</button> <br>-->
+          <input type='button' id="submit" value="Submit">
+      </div>
+    </form>
+  <center>
+  <div id="postedJobs"></div>
+  <p> First Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+  <p> Imaginary Entry </p>
+
+  <!--jQuery, Popper.js, and Bootstrap JS-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
