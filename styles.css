@@ -1,3 +1,7 @@
+body {
+  background-color: #efefef;
+}
+
 #headerText {
   font-size: 18px;
   color: white;
@@ -32,8 +36,36 @@
 #postJob {
   display: none;
   color: white;
+  background-color: #242526;
+  width: 100%;
 }
 
 .headInput {
   width: 49%;
+}
+
+#submitBut {
+  margin: 10px
+}
+
+input[type=text] {
+  padding: 5px 10px;
+  margin: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+#submit {
+  background: #343A40;
+  border: none;
+  color: white;
+  padding: 5px 10px;;
+  border-radius: 3px;
+  margin: 8px;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+#submit:hover {
+  background: #1D2124;
 }
