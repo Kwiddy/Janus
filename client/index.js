@@ -22,7 +22,21 @@ function toggle_hidden(div) {
   }
 }
 
-///////NEEDS TO BE REPHRASED?
+///////BOTH addEventListener NEED TO BE REPHRASED?
+window.addEventListener('click', async function(event){
+  let response = await fetch('http://127.0.0.1:8090/jobsList')
+  let body = await response.text();
+  let jobs = JSON.parse(body);
+
+  document.getElementById("postedJobs").innerHTML = "<ul>";
+
+  for(let i = 0; i < jobs.length; i++) {
+    document.getElementById("postedJobs").innerHTML += "<li class='jobsEntries'>" + jobs[i] + "</li>";
+  }
+
+  document.getElementById("postedJobs").innerHTML += "</ul>";
+});
+
 window.addEventListener('load', async function(event){
   let response = await fetch('http://127.0.0.1:8090/jobsList')
   let body = await response.text();
@@ -31,7 +45,7 @@ window.addEventListener('load', async function(event){
   document.getElementById("postedJobs").innerHTML = "<ul>";
 
   for(let i = 0; i < jobs.length; i++) {
-    document.getElementById("postedJobs").innerHTML += "<li>" + jobs[i] + "</li>";
+    document.getElementById("postedJobs").innerHTML += "<li class='jobsEntries'>" + jobs[i] + "</li>";
   }
 
   document.getElementById("postedJobs").innerHTML += "</ul>";
