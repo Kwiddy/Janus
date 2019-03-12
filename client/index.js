@@ -5,7 +5,7 @@ function onStart() {
   $("#submit").click(function() {
     addEmpl = $("#addEmpl").val();
     addJob = $("#addJob").val();
-    $.post("http://127.0.0.1:8090/index", {addEmpl:addEmpl , addJob:addJob});
+    $.post("http://127.0.0.1:8090/add", {addEmpl:addEmpl , addJob:addJob});
   });
 }
 
@@ -21,3 +21,18 @@ function toggle_hidden(div) {
     document.getElementById("newJob").innerHTML = "Cancel";
   }
 }
+
+///////NEEDS TO BE REPHRASED?
+window.addEventListener('load', async function(event){
+  let response = await fetch('http://127.0.0.1:8090/jobsList')
+  let body = await response.text();
+  let jobs = JSON.parse(body);
+
+  document.getElementById("postedJobs").innerHTML = "<ul>";
+
+  for(let i = 0; i < jobs.length; i++) {
+    document.getElementById("postedJobs").innerHTML += "<li>" + jobs[i] + "</li>";
+  }
+
+  document.getElementById("postedJobs").innerHTML += "</ul>";
+});
