@@ -26,30 +26,33 @@ function toggle_hidden(div) {
 window.addEventListener('click', async function(event){
   let response = await fetch('http://127.0.0.1:8090/jobsList')
   let body = await response.text();
-  let employersList = JSON.parse(body);
+  let submittedList = JSON.parse(body);
 
-  document.getElementById("postedJobs").innerHTML = "<ul>";
+  document.getElementById("postedJobs").innerHTML = "<div>";
 
-  for(let i = 0; i < employersList.length; i++) {
-    document.getElementById("postedJobs").innerHTML += "<li class='noStyle'> <div class='jobsEntries'>" + employersList[i] + "</div> </li>";
-  } //SEMICOLON
+  for(let i = 0; i < submittedList.length-1; i++) {
+    if (i % 2 == 0) {
+      document.getElementById("postedJobs").innerHTML += "<div class='jobsEntries'> <b> " + submittedList[i] + "</b> <br>" + submittedList[i+1] + "</div>";
+    }
+  };
 
-  document.getElementById("postedJobs").innerHTML += "</ul>";
-
+  document.getElementById("postedJobs").innerHTML += "</div>";
 });
 
 window.addEventListener('load', async function(event){
   let response = await fetch('http://127.0.0.1:8090/jobsList')
   let body = await response.text();
-  let employersList = JSON.parse(body);
+  let submittedList = JSON.parse(body);
 
-  document.getElementById("postedJobs").innerHTML = "<ul>";
+  document.getElementById("postedJobs").innerHTML = "<div>";
 
-  for(let i = 0; i < employersList.length; i++) {
-    document.getElementById("postedJobs").innerHTML += "<li class='noStyle'> <div class='jobsEntries'>" + employersList[i] + "</div> </li>";
-  } //SEMICOLON
+  for(let i = 0; i < submittedList.length-1; i++) {
+    if (i % 2 == 0) {
+      document.getElementById("postedJobs").innerHTML += "<div class='jobsEntries'> <b> " + submittedList[i] + "</b> <br>" + submittedList[i+1] + "</div>";
+    }
+  };
 
-  document.getElementById("postedJobs").innerHTML += "</ul>";
+  document.getElementById("postedJobs").innerHTML += "</div>";
 });
 
 
@@ -63,11 +66,11 @@ window.addEventListener('load', async function(event){
 /*
 let response = await fetch('http://127.0.0.1:8090/jobsList')
 let body = await response.text();
-let employersList = JSON.parse(body);
+let submittedList = JSON.parse(body);
 
-for(let i = 0; i < employersList.length; i++) {
+for(let i = 0; i < submittedList.length; i++) {
   var newPost = document.createElement("div");
-  newPost.innerHTML = employersList[i];
+  newPost.innerHTML = submittedList[i];
   newPost.className = "jobsEntries";
   document.body.appendChild(newPost);
 };
