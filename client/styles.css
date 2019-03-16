@@ -1,5 +1,5 @@
 body {
-  background-color: #efefef;
+  background-color: #fcfdff;
 }
 
 #headerText {
@@ -30,18 +30,20 @@ body {
 }
 
 #headSearch {
-  width: 100%;
+  width: 90%;
 }
 
 #postJob {
   display: none;
   color: white;
   background-color: #242526;
-  width: 100%;
+  width: 90%;
 }
 
 .headInput {
-  width: 49%;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
 }
 
 #submitBut {
@@ -68,4 +70,31 @@ input[type=text] {
 
 #submit:hover {
   background: #1D2124;
+}
+
+.myStyle {
+  list-style-type: none;
+}
+
+.jobsEntries {
+  background-color: #f2f3f4;
+  margin: 20px;
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.jobsEntries:hover {
+  transform: scale(1.01);
+  box-shadow:  0.01em 0.01em .1em #343A40;
+  background-color: #f1f1f1;
+  transition: background .07s ease-in;
+}
+
+.jobsEntries span {
+  display: none;
+}
+
+.jobsEntries:hover span {
+  display: block;
 }
