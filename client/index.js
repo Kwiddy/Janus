@@ -5,34 +5,37 @@ function onStart() {
   $("#submit").click(function() {
     addEmpl = $("#addEmpl").val();
     addJob = $("#addJob").val();
-    $.post("http://127.0.0.1:8090/add", {addEmpl:addEmpl , addJob:addJob});
+    addDesc = $("#addDesc").val();
+    $.post("http://127.0.0.1:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc});
   });
 }
 
 function toggle_hidden(div) {
   var elem = document.getElementById(div);
+  $(elem).animate({height: 'toggle'});
 
   if (document.getElementById("newJob").innerHTML == "Cancel") {
-    elem.style.display = 'none';
     document.getElementById("newJob").innerHTML = "Post a Job";
   }
   else {
-    elem.style.display = 'block';
     document.getElementById("newJob").innerHTML = "Cancel";
   }
 }
 
-///////BOTH addEventListener NEED TO BE REPHRASED?
 window.addEventListener('click', async function(event){
+
   let response = await fetch('http://127.0.0.1:8090/jobsList')
+  let descresp = await fetch('http://127.0.0.1:8090/descList')
   let body = await response.text();
+  let descbody = await descresp.text();
   let submittedList = JSON.parse(body);
+  let descriptionsList = JSON.parse(descbody);
 
   document.getElementById("postedJobs").innerHTML = "<div>";
 
   for(let i = 0; i < submittedList.length-1; i++) {
     if (i % 2 == 0) {
-      document.getElementById("postedJobs").innerHTML += "<div class='jobsEntries'> <b> " + submittedList[i] + "</b> <br>" + submittedList[i+1] + "</div>";
+      document.getElementById("postedJobs").innerHTML += "<div class='jobsEntries'> <b> " + submittedList[i] + "</b> - " + submittedList[i+1] + "<br>" + descriptionsList[i] + "</div>";;
     }
   };
 
@@ -41,37 +44,19 @@ window.addEventListener('click', async function(event){
 
 window.addEventListener('load', async function(event){
   let response = await fetch('http://127.0.0.1:8090/jobsList')
+  let descresp = await fetch('http://127.0.0.1:8090/descList')
   let body = await response.text();
+  let descbody = await descresp.text();
   let submittedList = JSON.parse(body);
+  let descriptionsList = JSON.parse(descbody);
 
   document.getElementById("postedJobs").innerHTML = "<div>";
 
   for(let i = 0; i < submittedList.length-1; i++) {
     if (i % 2 == 0) {
-      document.getElementById("postedJobs").innerHTML += "<div class='jobsEntries'> <b> " + submittedList[i] + "</b> <br>" + submittedList[i+1] + "</div>";
+      document.getElementById("postedJobs").innerHTML += "<div class='jobsEntries'> <b> " + submittedList[i] + "</b> - " + submittedList[i+1] + "<br>" + descriptionsList[i] + "</div>";
     }
   };
 
   document.getElementById("postedJobs").innerHTML += "</div>";
 });
-
-
-
-
-
-
-
-
-
-/*
-let response = await fetch('http://127.0.0.1:8090/jobsList')
-let body = await response.text();
-let submittedList = JSON.parse(body);
-
-for(let i = 0; i < submittedList.length; i++) {
-  var newPost = document.createElement("div");
-  newPost.innerHTML = submittedList[i];
-  newPost.className = "jobsEntries";
-  document.body.appendChild(newPost);
-};
-*/
