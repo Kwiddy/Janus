@@ -2,23 +2,30 @@ var express = require("express");
 var myParser = require("body-parser");
 var app = express();
 
-let employersList = [];
+let submittedList = [];
+let descriptions = [];
 
 app.use(myParser.urlencoded({extended:false}));
 app.use(myParser.json());
 app.use(express.static("client"));
 
 app.get('/jobsList', function(request, response) {
-  response.send(employersList);
+  response.send(submittedList);
+});
+
+app.get('/descList', function(request, response) {
+  response.send(descriptions);
 });
 
 app.post('/add', function(request, response) {
   var employer = request.body.addEmpl;
   var jobTitle = request.body.addJob;
-  console.log("Employer: " + employer + ", Title: " + jobTitle);
+  var desc = request.body.addDesc;
+  console.log("Employer: " + employer + ", Title: " + jobTitle + ", Description: " + desc);
 
-  ////////////Needs to be included to add both eventually
-  employersList.push(employer);
+  submittedList.push(employer);
+  submittedList.push(jobTitle);
+  descriptions.push(desc);
 
   response.end("yes");
 });
