@@ -17,7 +17,8 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
   <script src="index.js"></script>
-
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body onload="onStart()">
@@ -29,35 +30,44 @@
   </div>
 
   <nav class="navbar sticky-top navbar-dark" style="background-color:#242526">
-    <div class="col-sm-9" id="headLeft">
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-dark"> Refine Search </button>
+    </div>
+    <div class="col-sm-7" id="headLeft">
       <input type="text" placeholder="Search by Employer or Job..." id="headSearch">
     </div>
-    <div class="col-sm-3" id="headRight">
-      <center>
-        <button type="button" class="btn btn-dark">Search All</button>
-        <button type="button" class="btn btn-dark">My Account</button>
-        <button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob');">Post a Job</button>
-      </center>
-    </div>
+      <div class="col-sm-3" id="headRight">
+        <center>
+          <button type="button" class="btn btn-dark">Search All</button>
+          <button type="button" class="btn btn-dark">My Account</button>
+          <button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob');">Post a Job</button>
+        </center>
+      </div>
   </nav>
 
   <center>
     <form action="./add" method="post">
       <div id="postJob">
-          <input type="text" placeholder="Enter an Employer..." class="headInput" id="addEmpl">
-          <input type="text" placeholder="Enter a Job Title..." class="headInput" id="addJob"> <br>
-          <!--<textarea name="jobDescription" rows="8" cols="80" placeholder="Enter Job Description Here..."></textarea>-->
-          <input type='button' id="submit" value="Submit">
+
+        <table style="width:80%">
+          <tr>
+            <th> <input type="text" placeholder="Enter an Employer..." class="headInput" id="addEmpl">
+              <input type="text" placeholder="Enter a Job Title..." class="headInput" id="addJob"> </th> <br>
+            <th>&nbsp &nbsp &nbsp </th>
+            <th> <textarea rows="8" cols="50" placeholder="Enter Job Description Here..." id="addDesc"></textarea> </th> <br>
+          </tr>
+        </table>
+        <input type='button' id="submit" value="Submit">
       </div>
     </form>
   </center>
+
   <div id="postedJobs"></div>
 
   <!--jQuery, Popper.js, and Bootstrap JS-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="index.js"></script>
 </body>
 
 </html>
