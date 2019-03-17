@@ -46,15 +46,16 @@
   </nav>
 
   <center>
-    <form action="./add" method="post">
+    <form action="./add" method="post" id="submitEntity">
       <div id="postJob">
-
         <table style="width:80%">
           <tr>
             <th> <input type="text" placeholder="Enter an Employer..." class="headInput" id="addEmpl">
-              <input type="text" placeholder="Enter a Job Title..." class="headInput" id="addJob"> </th> <br>
+              <input type="text" placeholder="Enter a Job Title..." class="headInput" id="addJob">
+              <input type="text" placeholder="Link your website..." class="headInput" id="addURL">
+            </th> <br>
             <th>&nbsp &nbsp &nbsp </th>
-            <th> <textarea rows="8" cols="50" placeholder="Enter Job Description Here..." id="addDesc"></textarea> </th> <br>
+            <th> <textarea rows="8" cols="50" placeholder="Enter Job Description Here..." id="addDesc" class="headInput"></textarea> </th> <br>
           </tr>
         </table>
         <input type='button' id="submit" value="Submit">
