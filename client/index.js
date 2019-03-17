@@ -42,6 +42,21 @@ function onStart() {
       toggle_hidden('postJob');
     }
   });
+
+  $("#refineButton").click(async function() {
+    if (document.getElementById("refineButton").value == "Refine Search") {
+      console.log(document.getElementById("refineButton").innerHTML)
+      document.getElementById("refineButton").value = "Close Search Options";
+      $(document.getElementById("refSearch")).animate({width: 'toggle'});
+      $(document.getElementById("postedJobs")).animate({marginLeft: "24%"});
+    }
+    else {
+      document.getElementById("refineButton").style.display = "inline-block";
+      document.getElementById("refineButton").value = "Refine Search";
+      $(document.getElementById("refSearch")).animate({width: 'toggle'});
+      $(document.getElementById("postedJobs")).animate({marginLeft: "0%"});
+    }
+  });
 }
 
 function toggle_hidden(div) {
