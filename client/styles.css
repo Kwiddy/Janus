@@ -36,8 +36,9 @@ body {
 #postJob {
   display: none;
   color: white;
-  background-color: #242526;
-  width: 90%;
+  background-color: #3d3d3d;
+  background-image: linear-gradient(#242526, #44e0f4);
+  width: 100%;
 }
 
 .headInput {
@@ -58,9 +59,9 @@ input[type=text] {
 }
 
 #submit {
-  background: #343A40;
+  background: #f4f4f4;
   border: none;
-  color: white;
+  color: black;
   padding: 5px 10px;;
   border-radius: 3px;
   margin: 8px;
@@ -69,7 +70,7 @@ input[type=text] {
 }
 
 #submit:hover {
-  background: #1D2124;
+  background: #e8eaea;
 }
 
 .myStyle {
