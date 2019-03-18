@@ -3,6 +3,12 @@ function onStart() {
   var addJob;
   var addDesc;
   var addURL;
+
+/*
+  gapi.load('auth2', function() {
+    gapi.auth2.init();
+  });
+*/
   $("#submit").click(async function() {
 
     addEmpl = $("#addEmpl").val();
@@ -16,12 +22,12 @@ function onStart() {
     else {
       document.getElementById("submit").value = "Submit";
 
-      $.post("http://127.0.0.1:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL});
+      $.post("http://localhost:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL});
 
-      let response = await fetch('http://127.0.0.1:8090/empList')
-      let descresp = await fetch('http://127.0.0.1:8090/descList')
-      let jobresp = await fetch('http://127.0.0.1:8090/jobList')
-      let linkresp = await fetch('http://127.0.0.1:8090/linkList')
+      let response = await fetch('http://localhost:8090/empList')
+      let descresp = await fetch('http://localhost:8090/descList')
+      let jobresp = await fetch('http://localhost:8090/jobList')
+      let linkresp = await fetch('http://localhost:8090/linkList')
       let body = await response.text();
       let descbody = await descresp.text();
       let jobbody = await jobresp.text();
@@ -44,15 +50,14 @@ function onStart() {
   });
 
   $("#refineButton").click(async function() {
-    if (document.getElementById("refineButton").value == "Refine Search") {
-      console.log(document.getElementById("refineButton").innerHTML)
+    if (document.getElementById("refineButton").value == "Search Options") {
       document.getElementById("refineButton").value = "Close Search Options";
       $(document.getElementById("refSearch")).animate({width: 'toggle'});
       $(document.getElementById("postedJobs")).animate({marginLeft: "24%"});
     }
     else {
       document.getElementById("refineButton").style.display = "inline-block";
-      document.getElementById("refineButton").value = "Refine Search";
+      document.getElementById("refineButton").value = "Search Options";
       $(document.getElementById("refSearch")).animate({width: 'toggle'});
       $(document.getElementById("postedJobs")).animate({marginLeft: "0%"});
     }
@@ -74,10 +79,10 @@ function toggle_hidden(div) {
 }
 
 window.addEventListener('load', async function(event){
-  let response = await fetch('http://127.0.0.1:8090/empList')
-  let descresp = await fetch('http://127.0.0.1:8090/descList')
-  let jobresp = await fetch('http://127.0.0.1:8090/jobList')
-  let linkresp = await fetch('http://127.0.0.1:8090/linkList')
+  let response = await fetch('http://localhost:8090/empList')
+  let descresp = await fetch('http://localhost:8090/descList')
+  let jobresp = await fetch('http://localhost:8090/jobList')
+  let linkresp = await fetch('http://localhost:8090/linkList')
   let body = await response.text();
   let descbody = await descresp.text();
   let jobbody = await jobresp.text();
@@ -95,3 +100,43 @@ window.addEventListener('load', async function(event){
 
   document.getElementById("postedJobs").innerHTML += "</div>";
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////
+function onSignin(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "&nbsp &nbsp &nbsp";
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+        document.getElementById("Gsignin").style.display = 'none';
+        document.getElementById("Gsignout").style.display = 'block';
+      }
+
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+  console.log('User signed out.');
+  });
+  document.getElementById("Gsignin").style.display = 'block';
+  document.getElementById("Gsignout").style.display = 'none';
+  document.getElementById("masthead").innerHTML = "<div id='masthead'> <center> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.png' id='logo'></a> </center>"
+}
