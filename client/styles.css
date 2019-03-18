@@ -17,6 +17,8 @@ body {
 #masthead {
   background-color: #242526;
   width: 100%;
+  color: white;
+  text-align: right;
 }
 
 #logo {
@@ -123,4 +125,14 @@ input[type=text] {
   background-image: linear-gradient(to right, #c9c9c9, #f9f9f9);
   height: 100vh;
   width: 20%;
+}
+
+#Gsignin {
+  background-color: #242526;
+  border: none;
+  display: block;
+}
+
+#Gsignout {
+  display: none;
 }
