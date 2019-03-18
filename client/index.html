@@ -6,6 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com">
+
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -17,6 +20,7 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
   <script src="index.js"></script>
+  <script src="https://apis.google.com/js/platform.js" aysnc defer></script>
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -31,16 +35,21 @@
 
   <nav class="navbar sticky-top navbar-dark" style="background-color:#242526">
     <div class="col-sm-2">
-      <input type="button" class="btn btn-dark" id="refineButton" value="Refine Search"> </button>
+      <input type="button" class="btn btn-dark" id="refineButton" value="Search Options"> </button>
     </div>
     <div class="col-sm-7" id="headLeft">
       <input type="text" placeholder="Search by Employer or Job..." id="headSearch">
     </div>
       <div class="col-sm-3" id="headRight">
         <center>
-          <button type="button" class="btn btn-dark">Search All</button>
-          <button type="button" class="btn btn-dark">My Account</button>
-          <button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob');">Post a Job</button>
+          <table>
+            <tr>
+          <th><button type="button" class="btn btn-dark">Search All</button> </th>
+          <th><button id="Gsignin" class="g-signin2" data-onsuccess="onSignin" data-theme="light"></button>
+          <button onclick="signOut();" id="Gsignout" class="btn btn-dark">Sign out</button></th>
+          <th><button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob');">Post a Job</button></th>
+          <tr>
+        </table>
         </center>
       </div>
   </nav>
