@@ -4,13 +4,7 @@ function onStart() {
   var addDesc;
   var addURL;
 
-/*
-  gapi.load('auth2', function() {
-    gapi.auth2.init();
-  });
-*/
   $("#submit").click(async function() {
-
     addEmpl = $("#addEmpl").val();
     addJob = $("#addJob").val();
     addDesc = $("#addDesc").val();
@@ -23,7 +17,6 @@ function onStart() {
       document.getElementById("submit").value = "Submit";
 
       $.post("http://localhost:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL});
-
       let response = await fetch('http://localhost:8090/empList')
       let descresp = await fetch('http://localhost:8090/descList')
       let jobresp = await fetch('http://localhost:8090/jobList')
@@ -51,7 +44,7 @@ function onStart() {
 
   $("#refineButton").click(async function() {
     if (document.getElementById("refineButton").value == "Search Options") {
-      document.getElementById("refineButton").value = "Close Search Options";
+      document.getElementById("refineButton").value = "Close Options";
       $(document.getElementById("refSearch")).animate({width: 'toggle'});
       $(document.getElementById("postedJobs")).animate({marginLeft: "24%"});
     }
@@ -61,6 +54,38 @@ function onStart() {
       $(document.getElementById("refSearch")).animate({width: 'toggle'});
       $(document.getElementById("postedJobs")).animate({marginLeft: "0%"});
     }
+  });
+
+  $("#searchbar").click(async function() {
+    let response = await fetch('http://localhost:8090/empList')
+    let descresp = await fetch('http://localhost:8090/descList')
+    let jobresp = await fetch('http://localhost:8090/jobList')
+    let linkresp = await fetch('http://localhost:8090/linkList')
+    let body = await response.text();
+    let descbody = await descresp.text();
+    let jobbody = await jobresp.text();
+    let linkbody = await linkresp.text();
+    let empList = JSON.parse(body);
+    let descriptionsList = JSON.parse(descbody);
+    let jobList = JSON.parse(jobbody);
+    let linkList = JSON.parse(linkbody);
+
+    var keyword = document.getElementById("headSearch").value;
+
+    document.getElementById("postedJobs").innerHTML = "<div>";
+
+    for(let i = 0; i < empList.length; i++) {
+        if(empList[i].includes(keyword)) {
+          document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+        }
+        else if(jobList[i].includes(keyword)) {
+          document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+        }
+    };
+
+    document.getElementById("postedJobs").innerHTML += "</div>";
+
+    document.getElementById("headSearch").value = "";
   });
 }
 
@@ -100,7 +125,6 @@ window.addEventListener('load', async function(event){
 
   document.getElementById("postedJobs").innerHTML += "</div>";
 });
-
 
 
 
