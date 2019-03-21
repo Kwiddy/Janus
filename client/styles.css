@@ -32,7 +32,30 @@ body {
 }
 
 #headSearch {
-  width: 90%;
+  width: 100%;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+
+  padding: 5px 10px;
+  margin: 8px;
+  border: 1px solid #ccc;
+}
+
+#searchbar {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: none;
+  background-color: #343A40;
+  color: white;
+  height: 37.5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#searchbar:hover {
+  background-color:  #212529;
+  transition: .45s;
+  border-color: #343a40;
 }
 
 #postJob {
@@ -53,17 +76,16 @@ body {
   width: 100%;
   padding: 10px;
   margin: 10px;
-}
 
-#submitBut {
-  margin: 10px
-}
-
-input[type=text] {
   padding: 5px 10px;
   margin: 8px;
   border-radius: 3px;
   border: 1px solid #ccc;
+
+}
+
+#submitBut {
+  margin: 10px
 }
 
 #submit {
