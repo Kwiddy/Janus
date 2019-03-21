@@ -2,11 +2,6 @@ body {
   background-color: #fcfdff;
 }
 
-#headerText {
-  font-size: 18px;
-  color: white;
-}
-
 #headerTitle {
   padding: 10px;
   font-size: 30px;
@@ -24,11 +19,6 @@ body {
 #logo {
   width: 140px;
   height: 60px;
-}
-
-#headRight {
-  text-align: right;
-  width: 10%;
 }
 
 #headSearch {
@@ -66,12 +56,6 @@ body {
   width: 100%;
 }
 
-#warning {
-  display: none;
-  background-color: #3d3d3d;
-  color: white;
-}
-
 .headInput {
   width: 100%;
   padding: 10px;
@@ -82,10 +66,6 @@ body {
   border-radius: 3px;
   border: 1px solid #ccc;
 
-}
-
-#submitBut {
-  margin: 10px
 }
 
 #submit {
@@ -101,10 +81,6 @@ body {
 
 #submit:hover {
   background: #e8eaea;
-}
-
-.myStyle {
-  list-style-type: none;
 }
 
 .jobsEntries {
