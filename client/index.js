@@ -11,7 +11,8 @@ function onStart() {
     addURL = $("#addURL").val();
 
     if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") {
-      document.getElementById("submit").value = "Cannot leave empty - Resubmit";
+      document.getElementById("submit").value = "Resubmit";
+      alert("Please fill in all reqired fields below");
     }
     else {
       if (document.getElementById("addEmpl").placeholder != "Enter an Employer...") {
@@ -166,35 +167,22 @@ window.addEventListener('load', async function(event){
   document.getElementById("postedJobs").innerHTML += "</div>";
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////
 function onSignin(googleUser) {
         var profile = googleUser.getBasicProfile();
+        /*
         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
         console.log('Name: ' + profile.getName());
         document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "&nbsp &nbsp &nbsp";
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        */
 
         var imgURL = profile.getImageUrl();
         document.getElementById("hiddenImg").innerHTML = "<img src='" + imgURL + "' height='35' width='35' hspace='10'>";
 
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
+        // console.log("ID Token: " + id_token);
         document.getElementById("Gsignin").style.display = 'none';
         document.getElementById("Gsignout").style.display = 'block';
       }
@@ -202,7 +190,7 @@ function onSignin(googleUser) {
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
-  console.log('User signed out.');
+  // console.log('User signed out.');
   });
   document.getElementById("Gsignin").style.display = 'block';
   document.getElementById("Gsignout").style.display = 'none';
