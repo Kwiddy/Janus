@@ -16,30 +16,37 @@ function onStart() {
     else {
       if (document.getElementById("addEmpl").placeholder != "Enter an Employer...") {
         if (addEmpl == "") {
-          addEmpl = document.getElementById("addEmpl").placeholder    
+          addEmpl = document.getElementById("addEmpl").placeholder
         }
       }
       document.getElementById("submit").value = "Submit";
+      var addImg = document.getElementById("hiddenImg").innerHTML;
 
-      $.post("http://localhost:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL});
-      let response = await fetch('http://localhost:8090/empList')
-      let descresp = await fetch('http://localhost:8090/descList')
-      let jobresp = await fetch('http://localhost:8090/jobList')
-      let linkresp = await fetch('http://localhost:8090/linkList')
+      $.post("http://localhost:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
+
+      let response = await fetch('http://localhost:8090/empList');
+      let descresp = await fetch('http://localhost:8090/descList');
+      let jobresp = await fetch('http://localhost:8090/jobList');
+      let linkresp = await fetch('http://localhost:8090/linkList');
+      let imgresp = await fetch('http://localhost:8090/imgList');
       let body = await response.text();
       let descbody = await descresp.text();
       let jobbody = await jobresp.text();
       let linkbody = await linkresp.text();
+      let imgbody = await imgresp.text();
       let empList = JSON.parse(body);
       let descriptionsList = JSON.parse(descbody);
       let jobList = JSON.parse(jobbody);
       let linkList = JSON.parse(linkbody);
+      let imgList = JSON.parse(imgbody);
 
       document.getElementById("postedJobs").innerHTML = "<div>";
 
       for(let i = 0; i < empList.length; i++) {
-          document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
-      };
+          console.log("Here: " + imgList[i]);
+          document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+      }
+
 
       document.getElementById("postedJobs").innerHTML += "</div>";
       document.getElementById('submitEntity').reset();
@@ -123,24 +130,28 @@ function loggedCheck() {
 
 
 window.addEventListener('load', async function(event){
-  let response = await fetch('http://localhost:8090/empList')
-  let descresp = await fetch('http://localhost:8090/descList')
-  let jobresp = await fetch('http://localhost:8090/jobList')
-  let linkresp = await fetch('http://localhost:8090/linkList')
+  let response = await fetch('http://localhost:8090/empList');
+  let descresp = await fetch('http://localhost:8090/descList');
+  let jobresp = await fetch('http://localhost:8090/jobList');
+  let linkresp = await fetch('http://localhost:8090/linkList');
+  let imgresp = await fetch('http://localhost:8090/imgList');
   let body = await response.text();
   let descbody = await descresp.text();
   let jobbody = await jobresp.text();
   let linkbody = await linkresp.text();
+  let imgbody = await imgresp.text();
   let empList = JSON.parse(body);
   let descriptionsList = JSON.parse(descbody);
   let jobList = JSON.parse(jobbody);
   let linkList = JSON.parse(linkbody);
+  let imgList = JSON.parse(imgbody);
 
   document.getElementById("postedJobs").innerHTML = "<div>";
 
   for(let i = 0; i < empList.length; i++) {
-      document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
-  };
+      console.log("Here: " + imgList[i]);
+      document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+  }
 
   document.getElementById("postedJobs").innerHTML += "</div>";
 });
@@ -168,6 +179,9 @@ function onSignin(googleUser) {
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
+        var imgURL = profile.getImageUrl();
+        document.getElementById("hiddenImg").innerHTML = "<img src='" + imgURL + "' height='35' width='35' hspace='10'>";
+
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
@@ -182,5 +196,8 @@ function signOut() {
   });
   document.getElementById("Gsignin").style.display = 'block';
   document.getElementById("Gsignout").style.display = 'none';
-  document.getElementById("masthead").innerHTML = "<div id='masthead'> <center> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.png' id='logo'></a> </center>"
+  document.getElementById("postJob").style.display = 'none';
+  document.getElementById("masthead").innerHTML = "<div id='masthead'> <center> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.png' id='logo'></a> </center>";
+  document.getElementById("hiddenImg").innerHTML = "";
+
 }
