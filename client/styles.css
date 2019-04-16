@@ -4,9 +4,15 @@ body {
 
 #headerTitle {
   padding: 10px;
+  margin-right: 10%;
   font-size: 30px;
   color: white;
   text-align: left;
+}
+
+.transparentButton {
+  background-color: inherit;
+  border: none;
 }
 
 #masthead {
@@ -37,9 +43,9 @@ body {
   background-color: #343A40;
   color: white;
   height: 37.5px;
-  width: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #submitEntity {
@@ -137,7 +143,7 @@ body {
   display: none;
   background-color: #eaeaea;
   background-image: linear-gradient(to right, #c9c9c9, #f9f9f9);
-  height: 100vh;
+  height: 100%;;
   width: 20%;
 }
 
