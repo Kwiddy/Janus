@@ -56,7 +56,7 @@ function onStart() {
     }
   });
 
-  $("#searchbar").click(async function() {
+  $("#searchbtn").click(async function() {
     let response = await fetch('http://localhost:8090/empList')
     let descresp = await fetch('http://localhost:8090/descList')
     let jobresp = await fetch('http://localhost:8090/jobList')
@@ -75,10 +75,10 @@ function onStart() {
     document.getElementById("postedJobs").innerHTML = "<div>";
 
     for(let i = 0; i < empList.length; i++) {
-        if(empList[i].includes(keyword)) {
+        if(empList[i].toUpperCase().includes(keyword.toUpperCase())) {
           document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
         }
-        else if(jobList[i].includes(keyword)) {
+        else if(jobList[i].toUpperCase().includes(keyword.toUpperCase())) {
           document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
         }
     };
@@ -103,6 +103,20 @@ function toggle_hidden(div) {
   }
 }
 
+
+function loggedCheck() {
+  if ($(Gsignout).is(':visible')) {
+    var name = document.getElementById("masthead").innerHTML;
+    var n = name.indexOf("Logged in as");
+    var autoEmpl = name.substring(n+13, (name.length)-20)
+    document.getElementById("addEmpl").placeholder = autoEmpl;
+  }
+  else {
+    document.getElementById("addEmpl").placeholder = "Enter an Employer...";
+  }
+}
+
+
 window.addEventListener('load', async function(event){
   let response = await fetch('http://localhost:8090/empList')
   let descresp = await fetch('http://localhost:8090/descList')
@@ -125,6 +139,7 @@ window.addEventListener('load', async function(event){
 
   document.getElementById("postedJobs").innerHTML += "</div>";
 });
+
 
 
 
