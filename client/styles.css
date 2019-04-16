@@ -13,7 +13,7 @@ body {
   background-color: #242526;
   width: 100%;
   color: white;
-  text-align: right;
+  text-align: center;
 }
 
 #logo {
@@ -25,7 +25,6 @@ body {
   width: 100%;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-
   padding: 5px 10px;
   margin: 8px;
   border: 1px solid #ccc;
@@ -43,10 +42,24 @@ body {
   padding-right: 10px;
 }
 
+#submitEntity {
+  margin: auto;
+  width: 80%;
+}
+
+#sbuttonCol {
+  width: 100px;
+}
+
 #searchbtn:hover {
   background-color:  #212529;
   transition: .45s;
   border-color: #343a40;
+}
+
+#rightCol {
+  align: center;
+  padding: 0% 4%;
 }
 
 #postJob {
@@ -55,6 +68,7 @@ body {
   background-color: #3d3d3d;
   background-image: linear-gradient(#242526, #44e0f4);
   width: 100%;
+  margin: auto;
 }
 
 .headInput {
@@ -117,8 +131,9 @@ body {
   text-decoration: none;
 }
 
-#refSearch {
+#aboutCol {
   float: left;
+  padding: 10px;
   display: none;
   background-color: #eaeaea;
   background-image: linear-gradient(to right, #c9c9c9, #f9f9f9);
