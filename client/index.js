@@ -28,6 +28,7 @@ function onStart() {
       while (myCol.length != 7) {
         myCol += chars[Math.floor(Math.random()*chars.length)]
       }
+      console.log(myCol)
 
       if (addImg == "") {
         addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>"
@@ -54,7 +55,6 @@ function onStart() {
       document.getElementById("postedJobs").innerHTML = "<div>";
 
       for(let i = 0; i < empList.length; i++) {
-          console.log("Here: " + imgList[i]);
           document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
       }
 
@@ -65,33 +65,36 @@ function onStart() {
     }
   });
 
-  $("#refineButton").click(async function() {
-    if (document.getElementById("refineButton").value == "Search Options") {
-      document.getElementById("refineButton").value = "Close Options";
-      $(document.getElementById("refSearch")).animate({width: 'toggle'});
+  $("#aboutButton").click(async function() {
+    if (document.getElementById("aboutButton").value == "About Janus") {
+      document.getElementById("aboutButton").value = "Close";
+      $(document.getElementById("aboutCol")).animate({width: 'toggle'});
       $(document.getElementById("postedJobs")).animate({marginLeft: "24%"});
     }
     else {
-      document.getElementById("refineButton").style.display = "inline-block";
-      document.getElementById("refineButton").value = "Search Options";
-      $(document.getElementById("refSearch")).animate({width: 'toggle'});
+      document.getElementById("aboutButton").style.display = "inline-block";
+      document.getElementById("aboutButton").value = "About Janus";
+      $(document.getElementById("aboutCol")).animate({width: 'toggle'});
       $(document.getElementById("postedJobs")).animate({marginLeft: "0%"});
     }
   });
 
   $("#searchbtn").click(async function() {
-    let response = await fetch('http://localhost:8090/empList')
-    let descresp = await fetch('http://localhost:8090/descList')
-    let jobresp = await fetch('http://localhost:8090/jobList')
-    let linkresp = await fetch('http://localhost:8090/linkList')
+    let response = await fetch('http://localhost:8090/empList');
+    let descresp = await fetch('http://localhost:8090/descList');
+    let jobresp = await fetch('http://localhost:8090/jobList');
+    let linkresp = await fetch('http://localhost:8090/linkList');
+    let imgresp = await fetch('http://localhost:8090/imgList');
     let body = await response.text();
     let descbody = await descresp.text();
     let jobbody = await jobresp.text();
     let linkbody = await linkresp.text();
+    let imgbody = await imgresp.text();
     let empList = JSON.parse(body);
     let descriptionsList = JSON.parse(descbody);
     let jobList = JSON.parse(jobbody);
     let linkList = JSON.parse(linkbody);
+    let imgList = JSON.parse(imgbody);
 
     var keyword = document.getElementById("headSearch").value;
 
@@ -99,10 +102,10 @@ function onStart() {
 
     for(let i = 0; i < empList.length; i++) {
         if(empList[i].toUpperCase().includes(keyword.toUpperCase())) {
-          document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+          document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
         }
         else if(jobList[i].toUpperCase().includes(keyword.toUpperCase())) {
-          document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+          document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
         }
     };
 
@@ -160,29 +163,41 @@ window.addEventListener('load', async function(event){
   document.getElementById("postedJobs").innerHTML = "<div>";
 
   for(let i = 0; i < empList.length; i++) {
-      console.log("Here: " + imgList[i]);
       document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
   }
 
   document.getElementById("postedJobs").innerHTML += "</div>";
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////
 function onSignin(googleUser) {
         var profile = googleUser.getBasicProfile();
-        /*
         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
         console.log('Name: ' + profile.getName());
         document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "&nbsp &nbsp &nbsp";
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        */
 
         var imgURL = profile.getImageUrl();
         document.getElementById("hiddenImg").innerHTML = "<img src='" + imgURL + "' height='35' width='35' hspace='10'>";
 
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
-        // console.log("ID Token: " + id_token);
+        console.log("ID Token: " + id_token);
         document.getElementById("Gsignin").style.display = 'none';
         document.getElementById("Gsignout").style.display = 'block';
       }
@@ -190,7 +205,7 @@ function onSignin(googleUser) {
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
-  // console.log('User signed out.');
+  console.log('User signed out.');
   });
   document.getElementById("Gsignin").style.display = 'block';
   document.getElementById("Gsignout").style.display = 'none';
