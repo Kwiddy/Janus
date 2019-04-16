@@ -6,6 +6,7 @@ let empList = [];
 let descriptions = [];
 let jobList = [];
 let linkList = [];
+let imgList = [];
 
 app.use(myParser.urlencoded({extended:false}));
 app.use(myParser.json());
@@ -27,17 +28,23 @@ app.get('/linkList', function(request, response) {
   response.send(linkList);
 })
 
+app.get('/imgList', function(request, response) {
+  response.send(imgList);
+})
+
 app.post('/add', function(request, response) {
   var employer = request.body.addEmpl;
   var jobTitle = request.body.addJob;
   var desc = request.body.addDesc;
-  var link = request.body.addURL
-  console.log("Employer: " + employer + ", Title: " + jobTitle + ", Description: " + desc + ", URL: " + link);
+  var link = request.body.addURL;
+  var img = request.body.addImg;
+  console.log("Employer: " + employer + ", Title: " + jobTitle + ", Description: " + desc + ", URL: " + link + ", Image: " + img);
 
   empList.push(employer);
   jobList.push(jobTitle);
   descriptions.push(desc);
   linkList.push(link);
+  imgList.push(img)
 
   response.end("yes");
 });
