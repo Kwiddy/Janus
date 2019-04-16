@@ -170,7 +170,27 @@ window.addEventListener('load', async function(event){
 });
 
 
+window.addEventListener("resize", function(e) {
+  width = e.target.outerWidth;
+  height = e.target.outerHeight;
+  console.log("Width: " + width);
+  console.log("Height: " + height);
+  if(width < 450) {
+    document.getElementById("headMenu").style.visibility = "hidden";
+  }
+  if(width > 450) {
+    document.getElementById("headMenu").style.visibility = "visible";
+  }
+});
 
+function revealMenu() {
+  if(document.getElementById("headMenu").style.visibility == "hidden") {
+    document.getElementById("headMenu").style.visibility = "visible";
+  }
+  else {
+    document.getElementById("headMenu").style.visibility = "hidden";
+  }
+}
 
 
 
