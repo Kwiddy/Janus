@@ -42,7 +42,7 @@
       <table style="width:100%;">
         <tr>
           <th><input type="text" placeholder="Search by Employer or Job..." id="headSearch">
-          <th><button type="button" id="searchbar">Search All</button> </th>
+          <th width="100px"><button type="button" id="searchbtn">Search All</button> </th>
         </tr>
       </table>
     </div>
@@ -50,9 +50,9 @@
       <center>
         <table>
           <tr>
-            <th><button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob');">Post a Job</button></th>
+            <th><button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob'); loggedCheck();">Post a Job</button></th>
             <th><button id="Gsignin" class="g-signin2" data-onsuccess="onSignin" data-theme="light"></button>
-              <button onclick="signOut();" id="Gsignout" class="btn btn-dark">Sign out</button></th>
+              <button onclick="signOut(); toggle_hidden('postJob')" id="Gsignout" class="btn btn-dark">Sign out</button></th>
           <tr>
         </table>
       </center>
