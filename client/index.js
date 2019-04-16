@@ -22,6 +22,16 @@ function onStart() {
       document.getElementById("submit").value = "Submit";
       var addImg = document.getElementById("hiddenImg").innerHTML;
 
+      var myCol = "#";
+      var chars = ["A", "B", "C", "D", "E", "F", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+      while (myCol.length != 7) {
+        myCol += chars[Math.floor(Math.random()*chars.length)]
+      }
+
+      if (addImg == "") {
+        addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>"
+      }
+
       $.post("http://localhost:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
       let response = await fetch('http://localhost:8090/empList');
