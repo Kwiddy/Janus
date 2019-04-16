@@ -10,10 +10,15 @@ function onStart() {
     addDesc = $("#addDesc").val();
     addURL = $("#addURL").val();
 
-    if (addEmpl == "" || addJob == "" || addDesc == "" || addURL == "") {
+    if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") {
       document.getElementById("submit").value = "Cannot leave empty - Resubmit";
     }
     else {
+      if (document.getElementById("addEmpl").placeholder != "Enter an Employer...") {
+        if (addEmpl == "") {
+          addEmpl = document.getElementById("addEmpl").placeholder    
+        }
+      }
       document.getElementById("submit").value = "Submit";
 
       $.post("http://localhost:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL});
