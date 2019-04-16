@@ -19,7 +19,7 @@
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
 
   <script src="index.js"></script>
-  <script src="https://apis.google.com/js/platform.js" aysnc defer></script>
+  <script src="https://apis.google.com/js/platform.js"></script> <!-- used to have "aysnc defer" at end of opening tab-->
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -27,39 +27,32 @@
 <body onload="onStart()">
 
   <div id="masthead">
-    <center>
-      <a class="navbar-brand" href="#" id="headerTitle"><img src="IMG_3383.png" id="logo"></a>
-    </center>
+      <a class="navbar-brand" href="#" id="headerTitle"><img src="IMG_3383.png" id="logo" alt="logo"></a> <br>
   </div>
 
   <nav class="navbar sticky-top navbar-dark" style="background-color:#242526">
     <div class="col-sm-2">
-      <center>
-        <input type="button" class="btn btn-dark" id="refineButton" value="Search Options"> </button>
-      </center>
+        <input type="button" class="btn btn-dark" id="aboutButton" value="About Janus">
     </div>
     <div class="col-sm-7" id="headLeft">
       <table style="width:100%;">
         <tr>
           <th><input type="text" placeholder="Search by Employer or Job..." id="headSearch">
-          <th width="100px"><button type="button" id="searchbtn">Search All</button> </th>
+          <th id="sbuttonCol"><button type="button" id="searchbtn">Search All</button> </th>
         </tr>
       </table>
     </div>
-    <div class="col-sm-3">
-      <center>
+    <div class="col-sm-3" id="rightCol">
         <table>
           <tr>
             <th><button type="button" class="btn btn-dark" id="newJob" onclick="toggle_hidden('postJob'); loggedCheck();">Post a Job</button></th>
             <th><button id="Gsignin" class="g-signin2" data-onsuccess="onSignin" data-theme="light"></button>
               <button onclick="signOut()" id="Gsignout" class="btn btn-dark">Sign out</button></th>
-          <tr>
+          </tr>
         </table>
-      </center>
     </div>
   </nav>
 
-  <center>
     <form action="./add" method="post" id="submitEntity">
       <div id="postJob">
         <table style="width:80%">
@@ -67,18 +60,26 @@
             <th> <input type="text" placeholder="Enter an Employer..." class="headInput" id="addEmpl">
               <input type="text" placeholder="Enter a Job Title..." class="headInput" id="addJob">
               <input type="text" placeholder="Link your website..." class="headInput" id="addURL">
-            </th> <br>
-            <th>&nbsp &nbsp &nbsp </th>
-            <th> <textarea rows="8" cols="50" placeholder="Enter Job Description Here..." id="addDesc" class="headInput"></textarea> </th> <br>
+            </th>
+            <th>&nbsp; &nbsp; &nbsp; </th>
+            <th> <textarea rows="8" cols="50" placeholder="Enter Job Description Here..." id="addDesc" class="headInput"></textarea> </th>
           </tr>
         </table>
         <input type='button' id="submit" value="Submit">
       </div>
     </form>
-  </center>
 
-  <div id="refSearch">
-    <p> Hello </p>
+  <div id="aboutCol">
+    <p> <b> <u> About Janus </u> </b> </p>
+    <p> Welcome to Janus, the job opportunities site specifically for students. </p>
+    <p> Sign into Google to autofill employer information when adding a job. If it is a specific job you're looking for, use the large searchbar above to find jobs with specific keywords. </p>
+    <br>
+    <p> <b> About the developer </b> </p>
+    <p> This section will be developed further at a later date, including necessary links attached to the URL below. </p>
+    <br>
+    <p> <a href="#"> My Github </a>
+    <p> <a href="#"> Site Documentation </a>
+      <p> <a href="#"> Server Documentation </a>
   </div>
 
   <div id="postedJobs"></div>
