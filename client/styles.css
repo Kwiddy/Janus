@@ -31,18 +31,19 @@ body {
   border: 1px solid #ccc;
 }
 
-#searchbar {
+#searchbtn {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   border: none;
   background-color: #343A40;
   color: white;
   height: 37.5px;
+  width: 100px;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-#searchbar:hover {
+#searchbtn:hover {
   background-color:  #212529;
   transition: .45s;
   border-color: #343a40;
@@ -132,5 +133,9 @@ body {
 }
 
 #Gsignout {
+  display: none;
+}
+
+#hiddenImg {
   display: none;
 }
