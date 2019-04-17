@@ -179,22 +179,34 @@ window.addEventListener("resize", function(e) {
   width = e.target.outerWidth;
   height = e.target.outerHeight;
   if(width < 450) {
-    document.getElementById("headMenu").style.display = "none";
+    document.getElementById("aboutButton").style.display = "none";
+    document.getElementById("headSearch").style.display = "none";
+    document.getElementById("searchbtn").style.display = "none";
+    document.getElementById("newJob").style.display = "none";
   }
   if(width > 450) {
-    document.getElementById("headMenu").style.display = "block";
+    document.getElementById("aboutButton").style.display = "block";
+    document.getElementById("headSearch").style.display = "block";
+    document.getElementById("searchbtn").style.display = "block";
+    document.getElementById("newJob").style.display = "block";
   }
 });
 
 function revealMenu() {
-  if(document.getElementById("headMenu").style.display == "none") {
-    document.getElementById("headMenu").style.display = "block";
+  if(document.getElementById("aboutButton").style.display == "none") {
+    document.getElementById("aboutButton").style.display = "block";
+    document.getElementById("headSearch").style.display = "block";
+    document.getElementById("searchbtn").style.display = "block";
+    document.getElementById("newJob").style.display = "block";
   }
   else {
     if(document.getElementById("newJob").innerHTML == "Cancel") {
       toggle_hidden("postJob");
     }
-    document.getElementById("headMenu").style.display = "none";
+    document.getElementById("aboutButton").style.display = "none";
+    document.getElementById("headSearch").style.display = "none";
+    document.getElementById("searchbtn").style.display = "none";
+    document.getElementById("newJob").style.display = "none";
   }
 }
 
