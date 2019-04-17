@@ -28,7 +28,6 @@ function onStart() {
       while (myCol.length != 7) {
         myCol += chars[Math.floor(Math.random()*chars.length)]
       }
-      console.log(myCol)
 
       if (addImg == "") {
         addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>"
@@ -36,7 +35,12 @@ function onStart() {
 
       $.post("http://localhost:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
-      let response = await fetch('http://localhost:8090/empList');
+      let response = await fetch('http://localhost:8090/empList')
+      /*
+      .then(response => response.JSON).then(function(data) {
+        console.log(data);
+      });
+      */
       let descresp = await fetch('http://localhost:8090/descList');
       let jobresp = await fetch('http://localhost:8090/jobList');
       let linkresp = await fetch('http://localhost:8090/linkList');
@@ -173,8 +177,6 @@ window.addEventListener('load', async function(event){
 window.addEventListener("resize", function(e) {
   width = e.target.outerWidth;
   height = e.target.outerHeight;
-  console.log("Width: " + width);
-  console.log("Height: " + height);
   if(width < 450) {
     document.getElementById("headMenu").style.visibility = "hidden";
   }
@@ -188,6 +190,9 @@ function revealMenu() {
     document.getElementById("headMenu").style.visibility = "visible";
   }
   else {
+    if(document.getElementById("newJob").innerHTML == "Cancel") {
+      toggle_hidden("postJob");
+    }
     document.getElementById("headMenu").style.visibility = "hidden";
   }
 }
@@ -230,6 +235,7 @@ function signOut() {
   document.getElementById("Gsignin").style.display = 'block';
   document.getElementById("Gsignout").style.display = 'none';
   document.getElementById("postJob").style.display = 'none';
+  document.getElementById("newJob").innerHTML = "Post a Job";
   document.getElementById("masthead").innerHTML = "<div id='masthead'> <center> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.png' id='logo'></a> </center>";
   document.getElementById("hiddenImg").innerHTML = "";
 
