@@ -33,9 +33,9 @@ function onStart() {
         addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>"
       }
 
-      $.post("http://localhost:8090/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
+      $.post("https://janusjobs.herokuapp.com/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
-      let response = await fetch('http://localhost:8090/empList')
+      let response = await fetch('https://janusjobs.herokuapp.com/empList')
       /*
       .then(response => response.JSON).then(function(data) {
         console.log(data);
