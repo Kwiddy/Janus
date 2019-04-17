@@ -182,13 +182,13 @@ window.addEventListener("resize", function(e) {
     document.getElementById("headMenu").style.display = "none";
   }
   if(width > 450) {
-    document.getElementById("headMenu").style.display = "inline-block";
+    document.getElementById("headMenu").style.display = "table";
   }
 });
 
 function revealMenu() {
   if(document.getElementById("headMenu").style.display == "none") {
-    document.getElementById("headMenu").style.display = "inline-block";
+    document.getElementById("headMenu").style.display = "table";
   }
   else {
     if(document.getElementById("newJob").innerHTML == "Cancel") {
