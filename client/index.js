@@ -194,6 +194,9 @@ window.addEventListener("resize", function(e) {
     if(document.getElementById("masthead").innerHTML.includes("Logged")) {
       document.getElementById("Gsignout").style.display = "block";
     }
+    else {
+      document.getElementById("Gsignin").style.display = "block";
+    }
   }
 });
 
@@ -205,6 +208,9 @@ function revealMenu() {
     document.getElementById("newJob").style.display = "block";
     if(document.getElementById("masthead").innerHTML.includes("Logged")) {
       document.getElementById("Gsignout").style.display = "block";
+    }
+    else {
+      document.getElementById("Gsignin").style.display = "block";
     }
   }
   else {
