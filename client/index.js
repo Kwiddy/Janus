@@ -41,10 +41,10 @@ function onStart() {
         console.log(data);
       });
       */
-      let descresp = await fetch('http://localhost:8090/descList');
-      let jobresp = await fetch('http://localhost:8090/jobList');
-      let linkresp = await fetch('http://localhost:8090/linkList');
-      let imgresp = await fetch('http://localhost:8090/imgList');
+      let descresp = await fetch('https://janusjobs.herokuapp.com/descList');
+      let jobresp = await fetch('https://janusjobs.herokuapp.com/jobList');
+      let linkresp = await fetch('https://janusjobs.herokuapp.com/linkList');
+      let imgresp = await fetch('https://janusjobs.herokuapp.com/imgList');
       let body = await response.text();
       let descbody = await descresp.text();
       let jobbody = await jobresp.text();
@@ -84,11 +84,10 @@ function onStart() {
   });
 
   $("#searchbtn").click(async function() {
-    let response = await fetch('http://localhost:8090/empList');
-    let descresp = await fetch('http://localhost:8090/descList');
-    let jobresp = await fetch('http://localhost:8090/jobList');
-    let linkresp = await fetch('http://localhost:8090/linkList');
-    let imgresp = await fetch('http://localhost:8090/imgList');
+    let descresp = await fetch('https://janusjobs.herokuapp.com/descList');
+    let jobresp = await fetch('https://janusjobs.herokuapp.com/jobList');
+    let linkresp = await fetch('https://janusjobs.herokuapp.com/linkList');
+    let imgresp = await fetch('https://janusjobs.herokuapp.com/imgList');
     let body = await response.text();
     let descbody = await descresp.text();
     let jobbody = await jobresp.text();
@@ -148,11 +147,10 @@ function loggedCheck() {
 
 
 window.addEventListener('load', async function(event){
-  let response = await fetch('http://localhost:8090/empList');
-  let descresp = await fetch('http://localhost:8090/descList');
-  let jobresp = await fetch('http://localhost:8090/jobList');
-  let linkresp = await fetch('http://localhost:8090/linkList');
-  let imgresp = await fetch('http://localhost:8090/imgList');
+  let descresp = await fetch('https://janusjobs.herokuapp.com/descList');
+  let jobresp = await fetch('https://janusjobs.herokuapp.com/jobList');
+  let linkresp = await fetch('https://janusjobs.herokuapp.com/linkList');
+  let imgresp = await fetch('https://janusjobs.herokuapp.com/imgList');
   let body = await response.text();
   let descbody = await descresp.text();
   let jobbody = await jobresp.text();
