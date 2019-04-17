@@ -237,7 +237,7 @@ function signOut() {
   document.getElementById("Gsignout").style.display = 'none';
   document.getElementById("postJob").style.display = 'none';
   document.getElementById("newJob").innerHTML = "Post a Job";
-  document.getElementById("masthead").innerHTML = "<div id='masthead'> <center> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.png' id='logo'></a> </center>";
+  document.getElementById("masthead").innerHTML = "<div id='masthead'> <center> <a class='navbar-brand' href='#' id='headerTitle'><img src='https://raw.githubusercontent.com/Kwiddy/Janus/master/client/IMG_3383.PNG?token=AqIhU72BnkDZNcppFB_p5k5rb2WKRsIuks5cwGg_wA%3D%3D' id='logo'></a> </center>";
   document.getElementById("hiddenImg").innerHTML = "";
 
 }
