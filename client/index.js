@@ -179,22 +179,22 @@ window.addEventListener("resize", function(e) {
   width = e.target.outerWidth;
   height = e.target.outerHeight;
   if(width < 450) {
-    document.getElementById("headMenu").style.visibility = "hidden";
+    document.getElementById("headMenu").style.display = "none";
   }
   if(width > 450) {
-    document.getElementById("headMenu").style.visibility = "visible";
+    document.getElementById("headMenu").style.display = "block";
   }
 });
 
 function revealMenu() {
-  if(document.getElementById("headMenu").style.visibility == "hidden") {
-    document.getElementById("headMenu").style.visibility = "visible";
+  if(document.getElementById("headMenu").style.display == "none") {
+    document.getElementById("headMenu").style.display = "block";
   }
   else {
     if(document.getElementById("newJob").innerHTML == "Cancel") {
       toggle_hidden("postJob");
     }
-    document.getElementById("headMenu").style.visibility = "hidden";
+    document.getElementById("headMenu").style.display = "none";
   }
 }
 
