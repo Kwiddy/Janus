@@ -45,7 +45,7 @@ function onStart() {
       let jobresp = await fetch('https://janusjobs.herokuapp.com/jobList');
       let linkresp = await fetch('https://janusjobs.herokuapp.com/linkList');
       let imgresp = await fetch('https://janusjobs.herokuapp.com/imgList');
-      let body = await response.text();
+      //let body = await response.text();
       let descbody = await descresp.text();
       let jobbody = await jobresp.text();
       let linkbody = await linkresp.text();
@@ -84,12 +84,11 @@ function onStart() {
   });
 
   $("#searchbtn").click(async function() {
-    console.log("test");
     let descresp = await fetch('https://janusjobs.herokuapp.com/descList');
     let jobresp = await fetch('https://janusjobs.herokuapp.com/jobList');
     let linkresp = await fetch('https://janusjobs.herokuapp.com/linkList');
     let imgresp = await fetch('https://janusjobs.herokuapp.com/imgList');
-    let body = await response.text();
+    //let body = await response.text();
     let descbody = await descresp.text();
     let jobbody = await jobresp.text();
     let linkbody = await linkresp.text();
@@ -152,7 +151,7 @@ window.addEventListener('load', async function(event){
   let jobresp = await fetch('https://janusjobs.herokuapp.com/jobList');
   let linkresp = await fetch('https://janusjobs.herokuapp.com/linkList');
   let imgresp = await fetch('https://janusjobs.herokuapp.com/imgList');
-  let body = await response.text();
+  //let body = await response.text();
   let descbody = await descresp.text();
   let jobbody = await jobresp.text();
   let linkbody = await linkresp.text();
