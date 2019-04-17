@@ -183,12 +183,17 @@ window.addEventListener("resize", function(e) {
     document.getElementById("headSearch").style.display = "none";
     document.getElementById("searchbtn").style.display = "none";
     document.getElementById("newJob").style.display = "none";
+    document.getElementById("Gsignin").style.display = "none";
+    document.getElementById("Gsignout").style.display = "none";
   }
   if(width > 450) {
     document.getElementById("aboutButton").style.display = "block";
     document.getElementById("headSearch").style.display = "block";
     document.getElementById("searchbtn").style.display = "block";
     document.getElementById("newJob").style.display = "block";
+    if(document.getElementById("masthead").innerHTML.includes("Logged")) {
+      document.getElementById("Gsignout").style.display = "block";
+    }
   }
 });
 
@@ -198,6 +203,9 @@ function revealMenu() {
     document.getElementById("headSearch").style.display = "block";
     document.getElementById("searchbtn").style.display = "block";
     document.getElementById("newJob").style.display = "block";
+    if(document.getElementById("masthead").innerHTML.includes("Logged")) {
+      document.getElementById("Gsignout").style.display = "block";
+    }
   }
   else {
     if(document.getElementById("newJob").innerHTML == "Cancel") {
@@ -207,6 +215,8 @@ function revealMenu() {
     document.getElementById("headSearch").style.display = "none";
     document.getElementById("searchbtn").style.display = "none";
     document.getElementById("newJob").style.display = "none";
+    document.getElementById("Gsignin").style.display = "none";
+    document.getElementById("Gsignout").style.display = "none";
   }
 }
 
