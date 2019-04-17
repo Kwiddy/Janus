@@ -84,6 +84,7 @@ function onStart() {
   });
 
   $("#searchbtn").click(async function() {
+    console.log("test");
     let descresp = await fetch('https://janusjobs.herokuapp.com/descList');
     let jobresp = await fetch('https://janusjobs.herokuapp.com/jobList');
     let linkresp = await fetch('https://janusjobs.herokuapp.com/linkList');
