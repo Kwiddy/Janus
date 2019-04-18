@@ -15,6 +15,11 @@ body {
   border: none;
 }
 
+#emptyMsg {
+  background-color: light-grey;
+  display:block;
+}
+
 #masthead {
   background-color: #242526;
   width: 100%;
@@ -102,6 +107,10 @@ body {
 
 #submit:hover {
   background: #e8eaea;
+}
+
+#aboutButton {
+  padding: 5px;;
 }
 
 .jobsEntries {
