@@ -16,8 +16,11 @@ body {
 }
 
 #emptyMsg {
-  background-color: light-grey;
+  background-color: #e0e0e0;
   display:block;
+  width: 100%;
+  height: 100%;
+  padding: 20%;
 }
 
 #masthead {
