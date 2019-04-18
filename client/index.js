@@ -175,7 +175,7 @@ window.addEventListener('load', async function(event){
 
   document.getElementById("postedJobs").innerHTML += "</div>";
 
-  if(document.getElementById("postedJobs").innerHTML == "") {
+  if(document.getElementById("postedJobs").innerHTML == "<div></div>") {
     document.getElementById("emptyMsg").style.display = "block";
   }
 });
