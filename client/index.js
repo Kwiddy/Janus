@@ -33,6 +33,8 @@ function onStart() {
         addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>"
       }
 
+      document.getElementById("emptyMsg").style.display = "none";
+
       $.post("https://janusjobs.herokuapp.com/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
       let response = await fetch('https://janusjobs.herokuapp.com/empList')
@@ -172,6 +174,10 @@ window.addEventListener('load', async function(event){
   }
 
   document.getElementById("postedJobs").innerHTML += "</div>";
+
+  if(document.getElementById("postedJobs").innerHTML == "<div id='postJobs'></div>") {
+    document.getElementById("emptyMsg").style.display = "block";
+  }
 });
 
 
