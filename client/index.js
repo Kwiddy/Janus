@@ -34,6 +34,7 @@ function onStart() {
       }
 
       document.getElementById("emptyMsg").style.display = "none";
+      document.body.style.backgroundColor = "#fcfdff";
 
       $.post("https://janusjobs.herokuapp.com/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
@@ -177,6 +178,7 @@ window.addEventListener('load', async function(event){
 
   if(document.getElementById("postedJobs").innerHTML == "<div></div>") {
     document.getElementById("emptyMsg").style.display = "block";
+    document.body.style.backgroundColor = "#e0e0e0";
   }
 });
 
