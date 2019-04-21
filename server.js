@@ -1,7 +1,5 @@
 const app =  require('./app');
 const express = require('express');
-const uuid = require('uuid/v4');
-const session = require('express-session');
 
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
