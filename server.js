@@ -1,6 +1,7 @@
 const app =  require('./app');
 const express = require('express');
 
+/*
 var passport = require('passport');
 
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -28,5 +29,6 @@ app.get('/auth/google/callback',
   function(req, res) {
     res.redirect('/');
   });
+*/
 
 app.listen(process.env.PORT||8090);
