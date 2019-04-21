@@ -4,7 +4,7 @@
   "description": "Webpage to submit job postings",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js"
   },
   "author": "Kai Widdeson",
@@ -18,5 +18,8 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
     "uuidv4": "^4.0.0"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1"
   }
 }
