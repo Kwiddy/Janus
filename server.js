@@ -2,7 +2,7 @@ const app =  require('./app');
 const express = require('express');
 
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-
+/*
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
@@ -14,7 +14,7 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
-
+*/
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
 
