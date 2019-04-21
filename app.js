@@ -2,8 +2,6 @@ var express = require("express");
 var myParser = require("body-parser");
 var app = express();
 
-
-
 let empList = [];
 let descriptions = [];
 let jobList = [];
@@ -49,10 +47,6 @@ app.post('/add', function(req, res) {
   imgList.push(img)
 
   res.end("yes");
-});
-
-app.listen(8090, function() {
-  console.log("SERVER RUNNING ON PORT 8090");
 });
 
 module.exports = app;
