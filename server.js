@@ -1,9 +1,13 @@
+
+const app =  require('./app');
+app.listen(process.env.PORT||8090);
+
+/*
 const app =  require('./app');
 const express = require('express');
 const uuid = require('uuid/v4');
 const session = require('express-session');
 
-/*
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
@@ -26,6 +30,6 @@ app.get('/auth/google/callback',
   function(req, res) {
     res.redirect('/');
   });
-*/
 
 app.listen(process.env.PORT||8090);
+*/
