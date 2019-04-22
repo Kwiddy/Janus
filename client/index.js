@@ -11,7 +11,9 @@ function onStart() {
     addURL = $("#addURL").val();
 
     try {
-      if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") throw "is Empty";
+      if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") throw "Empty";
+      if (addURL.indludes(" ")) throw "Invalid URL";
+      if (addDesc.split(" ").length() > 200) throw "Too Long";
 
       if (document.getElementById("addEmpl").placeholder != "Enter an Employer...") {
         if (addEmpl == "") {
@@ -36,12 +38,6 @@ function onStart() {
 
       $.post("https://janusjobs.herokuapp.com/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
-      let response = await fetch('https://janusjobs.herokuapp.com/empList')
-      /*
-      .then(response => response.JSON).then(function(data) {
-        console.log(data);
-      });
-      */
       let descresp = await fetch('https://janusjobs.herokuapp.com/descList');
       let jobresp = await fetch('https://janusjobs.herokuapp.com/jobList');
       let linkresp = await fetch('https://janusjobs.herokuapp.com/linkList');
