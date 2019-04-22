@@ -18,9 +18,14 @@ body {
 #emptyMsg {
   background-color: #e0e0e0;
   display:none;
+  text-align: center;
   width: 100%;
   height: 100%;
   padding: 20%;
+}
+
+#emptyCenter {
+  display: inline-block;
 }
 
 #masthead {
