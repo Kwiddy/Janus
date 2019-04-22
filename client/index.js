@@ -13,7 +13,8 @@ function onStart() {
     try {
       if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") throw "Empty";
       if (addURL.includes(" ")) throw "Invalid URL";
-      if (addDesc.split(" ").length() > 200) throw "Too Long";
+      var testArr = addDesc.split(" ");
+      if (testArr.length() > 200) throw "Too Long";
 
       if (document.getElementById("addEmpl").placeholder != "Enter an Employer...") {
         if (addEmpl == "") {
