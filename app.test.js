@@ -5,6 +5,10 @@ describe('Test the various entities', () => {
 
   //Testing requests succeed
 
+  test('Test response for GET method', () => {
+    return request(app).get('/').expect(200);
+  });
+
   test('GET /empList succeeds', (done) => {
     return request(app)
       .get('/empList')
@@ -106,5 +110,17 @@ describe('Test the various entities', () => {
         done();
       });
     });
+
+  //Testing POSTs
+
+  test('POST /add succeeds', (done) => {
+    return request(app)
+      .post('/add')
+      .expect(200)
+      .end(function (err) {
+        if (err) return done(err);
+        done();
+      });
+  });
 
 });
