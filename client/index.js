@@ -10,11 +10,9 @@ function onStart() {
     addDesc = $("#addDesc").val();
     addURL = $("#addURL").val();
 
-    if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") {
-      document.getElementById("submit").value = "Resubmit";
-      alert("Please fill in all reqired fields below");
-    }
-    else {
+    try {
+      if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") throw "is Empty";
+
       if (document.getElementById("addEmpl").placeholder != "Enter an Employer...") {
         if (addEmpl == "") {
           addEmpl = document.getElementById("addEmpl").placeholder
@@ -70,6 +68,9 @@ function onStart() {
       document.getElementById("postedJobs").innerHTML += "</div>";
       document.getElementById('submitEntity').reset();
       toggle_hidden('postJob');
+    }
+    catch(err) {
+      alert("At least one input is: " + err);
     }
   });
 
