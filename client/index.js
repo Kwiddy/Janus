@@ -11,8 +11,15 @@ function onStart() {
     addURL = $("#addURL").val();
 
     try {
+
+      function testUrl(addUrl) {
+        var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+        return regexp.test(addURL);
+      }
+
       if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") throw "Empty";
-      if (addURL.includes(" ")) throw "Invalid URL";
+      //if (addURL.includes(" ")) throw "Invalid URL";
+      if (testUrl(addURL) == false) throw "Invalid URL";
       if (addDesc.split(" ").length > 200) throw "Too Long";
 
       if (document.getElementById("addEmpl").placeholder != "Enter an Employer...") {
