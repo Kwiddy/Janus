@@ -13,8 +13,8 @@ function onStart() {
     try {
 
       function testUrl(addUrl) {
-        var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-        return regexp.test(addURL);
+        var format = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+        return format.test(addURL);
       }
 
       if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") throw "Empty";
@@ -239,31 +239,30 @@ function revealMenu() {
 }
 
 
+/////////////////////////////////////////////
+//SOME OF THIS CODE BELOW WAS SUPPLIED BY GOOGLE DEVELOPERS AT https://developers.google.com/identity/sign-in/web/sign-in#add_a_google_sign-in_button LICENSED UNDER https://www.apache.org/licenses/LICENSE-2.0
+/*
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
+    http://www.apache.org/licenses/LICENSE-2.0
 
-
-
-
-
-
-
-
-
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 /////////////////////////////////////////////
 function onSignin(googleUser) {
         var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
+
         document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "&nbsp &nbsp &nbsp";
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        document.getElementById("hiddenImg").innerHTML = "<img src='" + profile.getImageUrl(); + "' height='35' width='35' hspace='10'>";
 
-        var imgURL = profile.getImageUrl();
-        document.getElementById("hiddenImg").innerHTML = "<img src='" + imgURL + "' height='35' width='35' hspace='10'>";
-
-        // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
+
         document.getElementById("Gsignin").style.display = 'none';
         document.getElementById("Gsignout").style.display = 'block';
       }
