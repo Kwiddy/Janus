@@ -12,41 +12,45 @@ app.use(myParser.urlencoded({extended:false}));
 app.use(myParser.json());
 app.use(express.static("client"));
 
-app.get('/empList', function(req, res) {
-  res.send(empList);
+app.get("/", (req, res) => {
+  res.status(200).send("/ received");
 });
 
-app.get('/jobList', function(req, res) {
-  res.send(jobList);
+app.get("/empList", function(req, res) {
+	res.status(200).send(empList);
 });
 
-app.get('/descList', function(req, res) {
-  res.send(descriptions);
+app.get("/jobList", function(req, res) {
+	res.status(200).send(jobList);
 });
 
-app.get('/linkList', function(req, res) {
-  res.send(linkList);
-})
+app.get("/descList", function(req, res) {
+	res.status(200).send(descriptions);
+});
 
-app.get('/imgList', function(req, res) {
-  res.send(imgList);
-})
+app.get("/linkList", function(req, res) {
+	res.status(200).send(linkList);
+});
 
-app.post('/add', function(req, res) {
-  var employer = req.body.addEmpl;
-  var jobTitle = req.body.addJob;
-  var desc = req.body.addDesc;
-  var link = req.body.addURL;
-  var img = req.body.addImg;
-  console.log("Employer: " + employer + ", Title: " + jobTitle + ", Description: " + desc + ", URL: " + link + ", Image: " + img);
+app.get("/imgList", function(req, res) {
+	res.status(200).send(imgList);
+});
 
-  empList.push(employer);
-  jobList.push(jobTitle);
-  descriptions.push(desc);
-  linkList.push(link);
-  imgList.push(img)
+app.post("/add", function(req, res) {
+	var employer = req.body.addEmpl;
+	var jobTitle = req.body.addJob;
+	var desc = req.body.addDesc;
+	var link = req.body.addURL;
+	var img = req.body.addImg;
+	console.log("Employer: " + employer + ", Title: " + jobTitle + ", Description: " + desc + ", URL: " + link + ", Image: " + img);
 
-  res.end("yes");
+	empList.push(employer);
+	jobList.push(jobTitle);
+	descriptions.push(desc);
+	linkList.push(link);
+	imgList.push(img);
+
+	res.end("yes");
 });
 
 module.exports = app;
