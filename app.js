@@ -50,7 +50,56 @@ app.post("/add", function(req, res) {
 	linkList.push(link);
 	imgList.push(img);
 
-	res.end("yes");
+	res.end("End");
 });
+
+
+
+
+
+
+///////////////////////////////
+var passport = require('passport');
+
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function (obj, done) {
+  done(null, obj);
+});
+
+passport.use(new GoogleStrategy({
+    clientID: 1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com,
+    clientSecret: _2gzvWyy4Mt_FK6c3KyzAzex,
+    callbackURL: "https://janusjobs.herokuapp.com/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, expires_in, done) {
+    return done(null, {user:profile, accessToken:accessToken, refreshToken:refreshToken});
+  }
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+/////////////////////
+
+
+
+
+
+
+
+
 
 module.exports = app;
