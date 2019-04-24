@@ -68,9 +68,10 @@ passport.deserializeUser(function (obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: 1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com,
-    clientSecret: _2gzvWyy4Mt_FK6c3KyzAzex,
+    clientID: "1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com",
+    clientSecret: "_2gzvWyy4Mt_FK6c3KyzAzex",
     callbackURL: "https://janusjobs.herokuapp.com/auth/google/callback"
+    //callbackURL: "localhost:8090"
   },
   function(accessToken, refreshToken, profile, done) {
     return done(null, {user:profile, accessToken:accessToken, refreshToken:refreshToken});
