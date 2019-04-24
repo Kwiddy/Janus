@@ -1,14 +1,14 @@
 const app =  require('./app');
 const express = require('express');
 
-/*
+
 var passport = require('passport');
 
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
+    clientID: 1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com,
+    clientSecret: _2gzvWyy4Mt_FK6c3KyzAzex,
     callbackURL: "https://janusjobs.herokuapp.com/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -29,6 +29,6 @@ app.get('/auth/google/callback',
   function(req, res) {
     res.redirect('/');
   });
-*/
+
 
 app.listen(process.env.PORT||8090);
