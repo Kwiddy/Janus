@@ -53,11 +53,6 @@ app.post("/add", function(req, res) {
 	res.end("End");
 });
 
-
-
-
-
-
 ///////////////////////////////
 var passport = require('passport');
 
@@ -74,9 +69,6 @@ passport.use(new GoogleStrategy({
     clientID: 1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com,
     clientSecret: _2gzvWyy4Mt_FK6c3KyzAzex,
     callbackURL: "https://janusjobs.herokuapp.com/auth/google/callback"
-    //clientID: client_id,
-    //clientSecret: client_secret,
-    //callbackURL: redirect_uri
   },
   function(accessToken, refreshToken, profile, done) {
     return done(null, {user:profile, accessToken:accessToken, refreshToken:refreshToken});
@@ -87,7 +79,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
+  passport.authenticate('google', { scope: ['profile'] }));
 
 app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
@@ -96,13 +88,5 @@ app.get('/auth/google/callback',
   });
 
 /////////////////////
-
-
-
-
-
-
-
-
 
 module.exports = app;
