@@ -59,9 +59,11 @@ var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.serializeUser(function (user, done) {
+  console.log("Hello cereal");
   done(null, user);
 });
 passport.deserializeUser(function (obj, done) {
+  console.log("Bye cereal");
   done(null, obj);
 });
 
