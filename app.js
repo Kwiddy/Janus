@@ -13,7 +13,7 @@ app.use(myParser.json());
 app.use(express.static("client"));
 
 app.get("/", (req, res) => {
-  res.status(200).send("/ received");
+	res.status(200).send("/ received");
 });
 
 app.get("/empList", function(req, res) {
@@ -42,7 +42,6 @@ app.post("/add", function(req, res) {
 	var desc = req.body.addDesc;
 	var link = req.body.addURL;
 	var img = req.body.addImg;
-	console.log("Employer: " + employer + ", Title: " + jobTitle + ", Description: " + desc + ", URL: " + link + ", Image: " + img);
 
 	empList.push(employer);
 	jobList.push(jobTitle);
@@ -54,41 +53,39 @@ app.post("/add", function(req, res) {
 });
 
 ///////////////////////////////
-var passport = require('passport');
+var passport = require("passport");
 
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 passport.serializeUser(function (user, done) {
-  console.log("Hello cereal");
-  done(null, user);
+	done(null, user);
 });
 passport.deserializeUser(function (obj, done) {
-  console.log("Bye cereal");
-  done(null, obj);
+	done(null, obj);
 });
 
 passport.use(new GoogleStrategy({
-    clientID: "1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com",
-    clientSecret: "_2gzvWyy4Mt_FK6c3KyzAzex",
-    callbackURL: "https://janusjobs.herokuapp.com/auth/google/callback"
-    //callbackURL: "localhost:8090"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    return done(null, {user:profile, accessToken:accessToken, refreshToken:refreshToken});
-  }
+	clientID: "1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com",
+	clientSecret: "_2gzvWyy4Mt_FK6c3KyzAzex",
+	callbackURL: "https://janusjobs.herokuapp.com/auth/google/callback"
+	//callbackURL: "localhost:8090"
+},
+function(accessToken, refreshToken, profile, done) {
+	return done(null, {user:profile, accessToken:accessToken, refreshToken:refreshToken});
+}
 ));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+app.get("/auth/google",
+	passport.authenticate("google", { scope: ["profile"] }));
 
-app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+app.get("/auth/google/callback",
+	passport.authenticate("google", { failureRedirect: "/" }),
+	function(req, res) {
+		res.redirect("/");
+	});
 
 /////////////////////
 
