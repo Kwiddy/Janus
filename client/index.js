@@ -29,6 +29,7 @@ function onStart() {
 			}
 			document.getElementById("submit").value = "Submit";
 			var addImg = document.getElementById("hiddenImg").innerHTML;
+			var mast = document.getElementById("masthead").innerHTML;
 
 			var myCol = "#";
 			var chars = ["A", "B", "C", "D", "E", "F", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -36,7 +37,7 @@ function onStart() {
 				myCol += chars[Math.floor(Math.random()*chars.length)];
 			}
 
-			if (addImg.toLowerCase().indexOf("Logged in as") === -1 && addImg.toLowerCase().indexOf("Logged in as") === -1) {
+			if (mast.toLowerCase().indexOf("Logged in as") === -1 && mast.toLowerCase().indexOf("Logged in as") === -1) {
 				addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>";
 			}
 
