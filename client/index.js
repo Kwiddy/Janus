@@ -29,6 +29,7 @@ function onStart() {
 			}
 			document.getElementById("submit").value = "Submit";
 			var addImg = document.getElementById("hiddenImg").innerHTML;
+			console.log(addImg);
 			var mast = document.getElementById("masthead").innerHTML;
 
 			var myCol = "#";
@@ -38,6 +39,7 @@ function onStart() {
 			}
 
 			if (mast.toLowerCase().indexOf("Logged in as") === -1 && mast.toLowerCase().indexOf("Logged in as") === -1) {
+				console.log("Not Signed in");
 				addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>";
 			}
 
