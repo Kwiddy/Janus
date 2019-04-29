@@ -38,7 +38,7 @@ function onStart() {
 				myCol += chars[Math.floor(Math.random()*chars.length)];
 			}
 
-			if (mast.toLowerCase().indexOf("Logged in as") === -1 && mast.toLowerCase().indexOf("Logged in as") === -1) {
+			if (addImg == "") {
 				console.log("Not Signed in");
 				addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>";
 			}
