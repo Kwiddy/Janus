@@ -36,7 +36,7 @@ function onStart() {
 				myCol += chars[Math.floor(Math.random()*chars.length)];
 			}
 
-			if (addImg == "") {
+			if (addImg.toLowerCase().indexOf("Logged in as") === -1 && addImg.toLowerCase().indexOf("Logged in as") === -1) {
 				addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>";
 			}
 
