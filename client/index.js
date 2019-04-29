@@ -245,7 +245,7 @@ function onSignin(googleUser) {
 	var profile = googleUser.getBasicProfile();
 
 	document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "&nbsp &nbsp &nbsp";
-	document.getElementById("hiddenImg").innerHTML = "<img src='" + profile.getImageUrl(); + "' height='35' width='35' hspace='10'>";
+	document.getElementById("hiddenImg").innerHTML = "<img src='" + profile.getImageUrl() + "' height='35' width='35' hspace='10'>";
 	console.log(document.getElementById("hiddenImg").innerHTML);
 
 	var id_token = googleUser.getAuthResponse().id_token;
