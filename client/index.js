@@ -252,9 +252,7 @@ function onSignin(googleUser) {
 
 function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
-	auth2.signOut().then(function () {
-		console.log("User signed out.");
-	});
+	auth2.signOut();
 	document.getElementById("Gsignin").style.display = "block";
 	document.getElementById("Gsignout").style.display = "none";
 	document.getElementById("postJob").style.display = "none";
