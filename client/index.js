@@ -44,6 +44,10 @@ function onStart() {
 			document.getElementById("emptyMsg").style.display = "none";
 			document.body.style.backgroundColor = "#fcfdff";
 
+			if (document.getElementById("Gsignout").style.display == "block") {
+				addEmpl += (" (verified)");
+			}
+
 			$.post("https://janusjobs.herokuapp.com/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
 			let descresp = await fetch("https://janusjobs.herokuapp.com/descList");
