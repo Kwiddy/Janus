@@ -1,5 +1,5 @@
 function onStart () {
-	console.log("hi");
+
 	let addEmpl;
 	let addJob;
 	let addDesc;
@@ -200,7 +200,7 @@ function loggedCheck () {
 }
 
 
-window.addEventListener("load", async function (event) {
+window.addEventListener("load", async function () {
 
 	let descresp = await fetch("https://janusjobs.herokuapp.com/descList");
 	let jobresp = await fetch("https://janusjobs.herokuapp.com/jobList");
@@ -272,7 +272,7 @@ window.addEventListener("resize", function (e) {
 
 });
 
-function revealMenu () {
+$("#revealMenu").click(async function () {
 
 	if(document.getElementById("aboutButton").style.display == "none") {
 
@@ -308,7 +308,7 @@ function revealMenu () {
 
 	}
 
-}
+});
 
 function onSignin (googleUser) {
 
