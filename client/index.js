@@ -12,13 +12,7 @@ function onStart() {
 
 		try {
 
-			function testUrl(addUrl) {
-				var format = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-				return format.test(addURL);
-			}
-
 			if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") throw "Empty";
-			//if (addURL.includes(" ")) throw "Invalid URL";
 			if (testUrl(addURL) == false) throw "Invalid URL";
 			if (addDesc.split(" ").length > 200) throw "Too Long";
 
@@ -29,7 +23,6 @@ function onStart() {
 			}
 			document.getElementById("submit").value = "Submit";
 			var addImg = document.getElementById("hiddenImg").innerHTML;
-			var mast = document.getElementById("masthead").innerHTML;
 
 			var myCol = "#";
 			var chars = ["A", "B", "C", "D", "E", "F", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -266,4 +259,9 @@ function signOut() {
 	document.getElementById("masthead").innerHTML = "<div id='masthead'> <table style='width:100%'> <tr> <th style='width:10%'> <button id='menubutton' class='transparentButton'> <ion-icon name='reorder' size='large' style='color:white; zoom:1.6;' onclick='revealMenu();'></ion-icon> </button> </th> <th style='width:90%'> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.PNG' id='logo' alt='logo'></a> <br></th> </tr> </table> </div>";
 	document.getElementById("hiddenImg").innerHTML = "";
 
+}
+
+function testUrl(addUrl) {
+	var format = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!]))?/;
+	return format.test(addURL);
 }
