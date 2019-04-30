@@ -141,7 +141,7 @@ function toggle_hidden(div) {
 
 
 function loggedCheck() {
-	if ($(Gsignout).is(":visible")) {
+	if ($("#Gsignout").is(":visible")) {
 		var name = document.getElementById("masthead").innerHTML;
 		var n = name.indexOf("Logged in as");
 		var autoEmpl = name.substring(n+13, name.length);
