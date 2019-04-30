@@ -41,19 +41,23 @@ These are described in more detail in the full server-side code documentation (a
 
 In brief:
  * GET /:
-  * Attempts a general get request from the webpage.
+
+  Attempts a general get request from the webpage.
 
 
  * GET /descList, /empList, /jobList, /linkList:
-  * These are all entities submitted in the same form on the webpage, they are also posted at the same time. See the comments in the code above to see the content of each list.
+
+  These are all entities submitted in the same form on the webpage, they are also posted at the same time. See the comments in the code above to see the content of each list.
 
 
  * GET /imgList:
-  * The images in this list are supplied by the profile information from the Google API. They are the profile images accompanying each post, if no user is signed in then a random profile image is used as described in the client-side section of the documentations.
+
+  The images in this list are supplied by the profile information from the Google API. They are the profile images accompanying each post, if no user is signed in then a random profile image is used as described in the client-side section of the documentations.
 
 
  * POST /add:
-  * This POST, posts all of the above lists at the same time so that information regarding the same job are in the same index of each list.
+
+  This POST, posts all of the above lists at the same time so that information regarding the same job are in the same index of each list.
 
 
 Along with GET requests from the GOOGLE OAUTH API, I use passport to create sessions for the site, meaning that different users can be logged on to the site with their google accounts at the same time:
