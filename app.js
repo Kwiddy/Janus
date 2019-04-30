@@ -75,6 +75,7 @@ app.get("/imgList", function(req, res) {
   * @code {200} if sending is successful
 */
 app.post("/add", function(req, res) {
+	console.log("hi");
 	console.log(document.getElementById("masthead").innerHTML);
 	var employer = req.body.addEmpl;
 	var jobTitle = req.body.addJob;
