@@ -348,4 +348,6 @@ function testUrl (addUrl) {
 
 }
 
-onStart();
+document.addEventListener("DOMContentLoaded"), function() {
+	onStart();
+}
