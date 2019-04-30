@@ -27,7 +27,7 @@ body {
 #subtext {
   color: #b5b5b5;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 8px;
 }
 
 #emptyCenter {
@@ -39,6 +39,7 @@ body {
   width: 100%;
   color: white;
   text-align: center;
+  font-style: italic;
 }
 
 #logo {
