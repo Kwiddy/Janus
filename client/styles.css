@@ -24,6 +24,12 @@ body {
   padding: 20%;
 }
 
+#subtext {
+  color: #b5b5b5;
+  font-weight: bold;
+  font-size: 10px;
+}
+
 #emptyCenter {
   display: inline-block;
 }
