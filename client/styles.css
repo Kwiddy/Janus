@@ -25,9 +25,9 @@ body {
 }
 
 .subtext {
-  color: red;
+  color: #787878;
   font-weight: bold;
-  font-size: 8px;
+  font-size: 10px;
   font-style: italic;
 }
 
