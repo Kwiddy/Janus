@@ -28,6 +28,7 @@ body {
   color: #b5b5b5;
   font-weight: bold;
   font-size: 8px;
+  font-style: italic;
 }
 
 #emptyCenter {
@@ -39,7 +40,6 @@ body {
   width: 100%;
   color: white;
   text-align: center;
-  font-style: italic;
 }
 
 #logo {
