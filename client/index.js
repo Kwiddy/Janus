@@ -147,7 +147,7 @@ function loggedCheck() {
 	if ($(Gsignout).is(":visible")) {
 		var name = document.getElementById("masthead").innerHTML;
 		var n = name.indexOf("Logged in as");
-		var autoEmpl = name.substring(n+13, (name.length)-20);
+		var autoEmpl = name.substring(n+13, name.length);
 		document.getElementById("addEmpl").placeholder = autoEmpl;
 	}
 	else {
