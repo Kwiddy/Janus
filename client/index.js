@@ -41,10 +41,6 @@ function onStart() {
 				addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>";
 			}
 
-			/*if (document.getElementById("masthead").innerHTML.includes("verified")) {
-				addEmpl += "(verified)";
-			}*/
-
 			document.getElementById("emptyMsg").style.display = "none";
 			document.body.style.backgroundColor = "#fcfdff";
 
@@ -246,16 +242,14 @@ function revealMenu() {
 function onSignin(googleUser) {
 	var profile = googleUser.getBasicProfile();
 
+	document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName();
 	document.getElementById("hiddenImg").innerHTML = "<img src='" + profile.getImageUrl() + "' height='35' width='35' hspace='10'>";
 
 	var id_token = googleUser.getAuthResponse().id_token;
 	if(id_token) {
 		document.getElementById("Gsignin").style.display = "none";
 		document.getElementById("Gsignout").style.display = "block";
-		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + " <span class='subtext'> (verified) </span>";
-	}
-	else {
-		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName();
+		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "(verified)";
 	}
 }
 
