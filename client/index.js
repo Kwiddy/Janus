@@ -1,5 +1,5 @@
 function onStart () {
-
+	console.log("hi");
 	let addEmpl;
 	let addJob;
 	let addDesc;
@@ -347,3 +347,5 @@ function testUrl (addUrl) {
 	return format.test(addUrl);
 
 }
+
+onStart();
