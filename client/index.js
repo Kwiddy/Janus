@@ -242,14 +242,14 @@ function revealMenu() {
 function onSignin(googleUser) {
 	var profile = googleUser.getBasicProfile();
 
-	document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "&nbsp &nbsp &nbsp";
+	document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName();
 	document.getElementById("hiddenImg").innerHTML = "<img src='" + profile.getImageUrl() + "' height='35' width='35' hspace='10'>";
 
 	var id_token = googleUser.getAuthResponse().id_token;
 	if(id_token) {
-		console.log("hi");
 		document.getElementById("Gsignin").style.display = "none";
 		document.getElementById("Gsignout").style.display = "block";
+		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "(verified)";
 	}
 }
 
