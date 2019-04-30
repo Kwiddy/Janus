@@ -242,15 +242,16 @@ function revealMenu() {
 function onSignin(googleUser) {
 	var profile = googleUser.getBasicProfile();
 
-	document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName();
 	document.getElementById("hiddenImg").innerHTML = "<img src='" + profile.getImageUrl() + "' height='35' width='35' hspace='10'>";
 
 	var id_token = googleUser.getAuthResponse().id_token;
 	if(id_token) {
 		document.getElementById("Gsignin").style.display = "none";
 		document.getElementById("Gsignout").style.display = "block";
-		document.getElementById("masthead").innerHTML -= "Logged in as " + profile.getName();
-		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + " <b> (verified) </b>";
+		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + " <span class='subtext'> (verified) </span>";
+	}
+	else {
+		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName();
 	}
 }
 
