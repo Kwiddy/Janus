@@ -249,7 +249,7 @@ function onSignin(googleUser) {
 	if(id_token) {
 		document.getElementById("Gsignin").style.display = "none";
 		document.getElementById("Gsignout").style.display = "block";
-		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "(verified)";
+		document.getElementById("masthead").innerHTML = "Logged in as " + profile.getName() + "(verified)";
 	}
 }
 
