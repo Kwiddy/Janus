@@ -8,11 +8,11 @@ app.use(myParser.json());
 app.use(express.static("client"));
 
 //Creation of Entity Lists
-let empList = []; //stores employers
-let descriptions = []; //stores job descriptions
-let jobList = []; //stores job titles
-let linkList = []; //stores URLs to jobs
-let imgList = []; //stores profile images
+let empList = [];
+let descriptions = [];
+let jobList = [];
+let linkList = [];
+let imgList = [];
 
 /** Attempts a General GET request from the Webpage
   * @name GET /
@@ -75,8 +75,6 @@ app.get("/imgList", function(req, res) {
   * @code {200} if sending is successful
 */
 app.post("/add", function(req, res) {
-	console.log("hi");
-	console.log(document.getElementById("masthead").innerHTML);
 	var employer = req.body.addEmpl;
 	var jobTitle = req.body.addJob;
 	var desc = req.body.addDesc;
@@ -107,7 +105,7 @@ passport.deserializeUser(function (obj, done) {
 	done(null, obj);
 });
 
-//Session control with ClientID and clientSecret (Authorisation)
+//Session control with ClientID and clientSecret
 passport.use(new GoogleStrategy({
 	clientID: "1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com",
 	clientSecret: "_2gzvWyy4Mt_FK6c3KyzAzex",
@@ -126,24 +124,18 @@ app.use(passport.session());
 /** Attempts a GET request from GOOGLE OAUTH API through passport
   * @name GET /auth/google
   * @path {GET} /auth/google
-  * @code {302} if profile found
 */
 app.get("/auth/google",
-	passport.authenticate("google", { scope: ["profile"] }),
-  function(req, res) {
-    res.status(302);
-  });
+	passport.authenticate("google", { scope: ["profile"] }));
 
 /** Attempts a GET request from GOOGLE OAUTH API Callback through passport
   * @name GET /auth/google/callback
   * @path {GET} /auth/google/callback
-  * @code {302} if redirect found
 */
 app.get("/auth/google/callback",
 	passport.authenticate("google", { failureRedirect: "/" }),
 	function(req, res) {
 		res.redirect("/"); //redirecting page
-		res.status(302);
 	});
 
 /////////////////////
