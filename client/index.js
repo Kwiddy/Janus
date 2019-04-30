@@ -186,8 +186,7 @@ window.addEventListener("load", async function(event){
 
 
 window.addEventListener("resize", function(e) {
-	width = e.target.outerWidth;
-	height = e.target.outerHeight;
+	var width = e.target.outerWidth;
 	if(width < 450) {
 		document.getElementById("aboutButton").style.display = "none";
 		document.getElementById("headSearch").style.display = "none";
@@ -247,6 +246,7 @@ function onSignin(googleUser) {
 		document.getElementById("Gsignout").style.display = "block";
 		document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName();
 	}
+	loggedCheck();
 }
 
 function signOut() {
@@ -262,6 +262,6 @@ function signOut() {
 }
 
 function testUrl(addUrl) {
-	var format = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!]))?/;
-	return format.test(addURL);
+	var format = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+	return format.test(addUrl);
 }
