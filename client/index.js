@@ -272,7 +272,7 @@ window.addEventListener("resize", function (e) {
 
 });
 
-document.getElementById("revealMenu").onclick = function() {
+document.getElementById("menubutton").onclick = function () {
 
 	if(document.getElementById("aboutButton").style.display == "none") {
 
@@ -308,7 +308,7 @@ document.getElementById("revealMenu").onclick = function() {
 
 	}
 
-}
+};
 
 function onSignin (googleUser) {
 
