@@ -41,6 +41,10 @@ function onStart() {
 				addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>";
 			}
 
+			if (document.getElementById("masthead").innerHTML.includes("verified")) {
+				addEmpl += "(verified)";
+			}
+
 			document.getElementById("emptyMsg").style.display = "none";
 			document.body.style.backgroundColor = "#fcfdff";
 
