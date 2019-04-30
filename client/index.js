@@ -272,7 +272,7 @@ window.addEventListener("resize", function (e) {
 
 });
 
-document.getElementById("button").onclick = function() {
+document.getElementById("revealMenu").onclick = function() {
 
 	if(document.getElementById("aboutButton").style.display == "none") {
 
