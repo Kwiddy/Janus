@@ -1,17 +1,19 @@
 # Janus
+[Click Here to Visit the Site](https://janusjobs.herokuapp.com/)
 
 
 ## General Information
-[JanusJobs](https://pip.pypa.io/en/stable/) is a job advertising site, allowing users to sign in with their Google Accounts and advertise their jobs on a message-board like site. These advertisements will have only crucial information such as employer, title, and job description, with profile images and a link to the employer's site or primary advertisement when clicked.
+[JanusJobs](https://pip.pypa.io/en/stable/) is a job advertising site, allowing users to sign in with their Google Accounts and advertise their jobs on a message-board like site. These advertisements will have only crucial information such as employer, title, and job description, with profile images and a link to the employer's site or primary advertisement when clicked. The API uses GET and POST requests to handle the different entities.
+
+The site is running on *herokuapp* at: [https://janusjobs.herokuapp.com/](https://janusjobs.herokuapp.com/), to test locally you would need to change all of the herokuapp links in the code to localhost, the port that would be in use is port 8090.
 
 ## Server-Side Documentation
-*Note: This is a summary, for full server-side code documentation and details on the testing used please see:*
+***Note: This is a summary, for full server-side code documentation and details on the testing used please see:***
 
 ### server.js
 *server.js* contains only the following code snippet:
 ``` javascript
 const app =  require("./app");
-const express = require("express");
 
 app.listen(process.env.PORT||8090);
 ```
@@ -62,30 +64,36 @@ In brief:
 
 Along with GET requests from the GOOGLE OAUTH API, I use passport to create sessions for the site, meaning that different users can be logged on to the site with their google accounts at the same time:
 ``` javascript
-var passport = require("passport");
-var GoogleStrategy = require("passport-google-oauth20").Strategy;
+let passport = require("passport");
+let GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-//User sessions control via Serialize and Deserialize
+// User sessions control via Serialize and Deserialize
 passport.serializeUser(function (user, done) {
+
 	done(null, user);
+
 });
 passport.deserializeUser(function (obj, done) {
+
 	done(null, obj);
+
 });
 
-//Session control with ClientID and clientSecret
+// Session control with ClientID and clientSecret (Authorisation)
 passport.use(new GoogleStrategy({
 	clientID: "1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com",
 	clientSecret: "_2gzvWyy4Mt_FK6c3KyzAzex",
 	callbackURL: "https://janusjobs.herokuapp.com/auth/google/callback"
-	//callbackURL: "localhost:8090" //for use with local testing
+	// callbackURL: "localhost:8090" //for use with local testing
 },
-function(accessToken, refreshToken, profile, done) {
+function (accessToken, refreshToken, profile, done) {
+
 	return done(null, {user:profile, accessToken:accessToken, refreshToken:refreshToken});
+
 }
 ));
 
-//Initialising Passport Session
+// Initialising Passport Session
 app.use(passport.initialize());
 app.use(passport.session());
 ```
@@ -95,24 +103,33 @@ The code above then works with the following two GET requests to provide Google 
 /** Attempts a GET request from GOOGLE OAUTH API through passport
   * @name GET /auth/google
   * @path {GET} /auth/google
+	* @code {302} If profile found
 */
 app.get("/auth/google",
-	passport.authenticate("google", { scope: ["profile"] }));
+	passport.authenticate("google", { scope: ["profile"] }),
+	function (req, res) {
+
+		res.status(302);
+
+	});
 
 /** Attempts a GET request from GOOGLE OAUTH API Callback through passport
   * @name GET /auth/google/callback
   * @path {GET} /auth/google/callback
+	* @code {302} If redirect found
 */
 app.get("/auth/google/callback",
 	passport.authenticate("google", { failureRedirect: "/" }),
-	function(req, res) {
-		res.redirect("/"); //redirecting page
+	function (req, res) {
+
+		res.redirect("/"); // redirecting page
+		res.status(302);
+
 	});
 ```
 The first of these GET requests returns user profile information, whereas the second occurs when call back and therefore a redirect back to the page is necessary.
 
 ## Client-Side Documentation
-*Note: This is a summary, for full client-side code documentation please see:*
 
 ### Initial Loading
 When the page initially loads, the page will send GET requests for entities relating to job postings, if this request returns empty lists then there will be a message telling the viewer that no jobs have been posted yet and they will be encouraged to post the first.
@@ -138,5 +155,16 @@ The search bar allows the user to search for jobs with any keywords or strings w
 ### Viewports
 The webpage is designed such that no matter the size of the viewport the page should be easily readable by the user. As the screen size reduces the navbar slowly folds in on itself until a predetermined viewport size limit is reached. At this point, the search options and buttons in the navbar will disappear automatically and can be expanded again either manually by pressing the expand burger menu button or automatically by increasing the viewport size again.
 
+## External API (GOOGLE OAUTH 2.0)
+The accounts system for the site is handled by the external Google Oauth 2.0 API, allowing users to log into their google accounts, the data from these accounts are then used in several cases in the site.
+
+Firstly, once a user has logged in, the google sign in button will be replaced with a sign out button and there will be a "Logged in as" message underneath the site logo. Authentication has been used so that next to this logged in message there will be a "verified" signal in brackets next to the posting if an ID Token has been received.
+
+Account name will also be auto-filled in the form for job posting and the account image will accompany the job automatically once on the screen.
+
+In summary, the external API provides the site with a secure method of logging into an already established account, whose name, profile picture, and an ID token are then passed to the site.
+
 ## Known Bugs
 When hovering over a posted job, the job should expand to reveal the job description, however occasionally the most recent posting will show the description as undefined. If jobs are continued to be posted after this, the description will later appear correctly after further jobs have been posted. Similarly, if the page is refreshed the description appears correctly also.
+
+When using *herokuapp* for hosting, the data isn't persistent meaning any jobs posted will be lost when the server is reset, the jobs will remain posted however if testing using localhost port 8090.
