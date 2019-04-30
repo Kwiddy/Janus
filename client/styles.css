@@ -24,13 +24,6 @@ body {
   padding: 20%;
 }
 
-.subtext {
-  color: #787878;
-  font-weight: bold;
-  font-size: 10px;
-  font-style: italic;
-}
-
 #emptyCenter {
   display: inline-block;
 }
