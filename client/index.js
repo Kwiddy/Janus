@@ -328,7 +328,7 @@ function onSignin (googleUser) {
 
 }
 
-document.getElementById("Gsignout").onclick = function () {
+function signOut () {
 
 	let auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut();
@@ -339,7 +339,7 @@ document.getElementById("Gsignout").onclick = function () {
 	document.getElementById("masthead").innerHTML = "<div id='masthead'> <table style='width:100%'> <tr> <th style='width:10%'> <button id='menubutton' class='transparentButton'> <ion-icon name='reorder' size='large' style='color:white; zoom:1.6;' onclick='revealMenu();'></ion-icon> </button> </th> <th style='width:90%'> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.PNG' id='logo' alt='logo'></a> <br></th> </tr> </table> </div>";
 	document.getElementById("hiddenImg").innerHTML = "";
 
-};
+}
 
 function testUrl (addUrl) {
 
