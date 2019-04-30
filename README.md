@@ -138,8 +138,5 @@ The search bar allows the user to search for jobs with any keywords or strings w
 ### Viewports
 The webpage is designed such that no matter the size of the viewport the page should be easily readable by the user. As the screen size reduces the navbar slowly folds in on itself until a predetermined viewport size limit is reached. At this point, the search options and buttons in the navbar will disappear automatically and can be expanded again either manually by pressing the expand burger menu button or automatically by increasing the viewport size again.
 
-## Licensing
-
-
 ## Known Bugs
 When hovering over a posted job, the job should expand to reveal the job description, however occasionally the most recent posting will show the description as undefined. If jobs are continued to be posted after this, the description will later appear correctly after further jobs have been posted. Similarly, if the page is refreshed the description appears correctly also.
