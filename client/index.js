@@ -29,7 +29,6 @@ function onStart() {
 			}
 			document.getElementById("submit").value = "Submit";
 			var addImg = document.getElementById("hiddenImg").innerHTML;
-			console.log(addImg);
 			var mast = document.getElementById("masthead").innerHTML;
 
 			var myCol = "#";
@@ -39,7 +38,6 @@ function onStart() {
 			}
 
 			if (addImg == "") {
-				console.log("Not Signed in");
 				addImg = "<svg width='55px' height='38px'> <rect x='10' y='0' width='35' height='35' style='fill:" + myCol +";'/> </svg>";
 			}
 
@@ -246,12 +244,13 @@ function onSignin(googleUser) {
 
 	document.getElementById("masthead").innerHTML += "Logged in as " + profile.getName() + "&nbsp &nbsp &nbsp";
 	document.getElementById("hiddenImg").innerHTML = "<img src='" + profile.getImageUrl() + "' height='35' width='35' hspace='10'>";
-	console.log(document.getElementById("hiddenImg").innerHTML);
 
 	var id_token = googleUser.getAuthResponse().id_token;
-
-	document.getElementById("Gsignin").style.display = "none";
-	document.getElementById("Gsignout").style.display = "block";
+	if(id_token) {
+		console.log("hi");
+		document.getElementById("Gsignin").style.display = "none";
+		document.getElementById("Gsignout").style.display = "block";
+	}
 }
 
 function signOut() {
