@@ -272,44 +272,6 @@ window.addEventListener("resize", function (e) {
 
 });
 
-document.getElementById("aboutButton").addEventListener("click", function(){
-
-	if(document.getElementById("aboutButton").style.display == "none") {
-
-		document.getElementById("aboutButton").style.display = "block";
-		document.getElementById("headSearch").style.display = "block";
-		document.getElementById("searchbtn").style.display = "block";
-		document.getElementById("newJob").style.display = "block";
-		if(document.getElementById("masthead").innerHTML.includes("Logged")) {
-
-			document.getElementById("Gsignout").style.display = "block";
-
-		}
-		else {
-
-			document.getElementById("Gsignin").style.display = "block";
-
-		}
-
-	}
-	else {
-
-		if(document.getElementById("newJob").innerHTML == "Cancel") {
-
-			toggle_hidden("postJob");
-
-		}
-		document.getElementById("aboutButton").style.display = "none";
-		document.getElementById("headSearch").style.display = "none";
-		document.getElementById("searchbtn").style.display = "none";
-		document.getElementById("newJob").style.display = "none";
-		document.getElementById("Gsignin").style.display = "none";
-		document.getElementById("Gsignout").style.display = "none";
-
-	}
-
-});
-
 function onSignin (googleUser) {
 
 	let profile = googleUser.getBasicProfile();
@@ -351,5 +313,43 @@ function testUrl (addUrl) {
 document.addEventListener("DOMContentLoaded", function () {
 
 	onStart();
+
+	document.getElementById("aboutButton").addEventListener("click", function() {
+
+		if(document.getElementById("aboutButton").style.display == "none") {
+
+			document.getElementById("aboutButton").style.display = "block";
+			document.getElementById("headSearch").style.display = "block";
+			document.getElementById("searchbtn").style.display = "block";
+			document.getElementById("newJob").style.display = "block";
+			if(document.getElementById("masthead").innerHTML.includes("Logged")) {
+
+				document.getElementById("Gsignout").style.display = "block";
+
+			}
+			else {
+
+				document.getElementById("Gsignin").style.display = "block";
+
+			}
+
+		}
+		else {
+
+			if(document.getElementById("newJob").innerHTML == "Cancel") {
+
+				toggle_hidden("postJob");
+
+			}
+			document.getElementById("aboutButton").style.display = "none";
+			document.getElementById("headSearch").style.display = "none";
+			document.getElementById("searchbtn").style.display = "none";
+			document.getElementById("newJob").style.display = "none";
+			document.getElementById("Gsignin").style.display = "none";
+			document.getElementById("Gsignout").style.display = "none";
+
+		}
+
+	});
 
 });
