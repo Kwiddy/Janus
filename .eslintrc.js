@@ -33,6 +33,7 @@ module.exports = {
 			"always"
 			],
 			"no-console": "off",
+			"no-useless-escape": "off",
 			"padded-blocks": "error",
 			"padding-line-between-statements": "error",
 			"space-before-blocks": "error",
