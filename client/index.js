@@ -1,5 +1,7 @@
+// below function operates when DOM Content is loaded
 function onStart () {
 
+	//	Initialising variables from form to be posted
 	let addEmpl;
 	let addJob;
 	let addDesc;
@@ -12,12 +14,14 @@ function onStart () {
 		addDesc = $("#addDesc").val();
 		addURL = $("#addURL").val();
 
+		//	Error catching for inputs
 		try {
 
 			if (addEmpl == "" && document.getElementById("addEmpl").placeholder == "Enter an Employer..." || addJob == "" || addDesc == "" || addURL == "") throw "Empty";
 			if (testUrl(addURL) == false) throw "Invalid URL";
 			if (addDesc.split(" ").length > 200) throw "Too Long";
 
+			// Taking value of automatically filled placeholder when logged in
 			if (document.getElementById("addEmpl").placeholder != "Enter an Employer...") {
 
 				if (addEmpl == "") {
@@ -28,8 +32,11 @@ function onStart () {
 
 			}
 			document.getElementById("submit").value = "Submit";
+
+			//	Setting posting image to profile image
 			let addImg = document.getElementById("hiddenImg").innerHTML;
 
+			//	Creating random profile pic for users not signed in
 			let myCol = "#";
 			let chars = ["A", "B", "C", "D", "E", "F", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 			while (myCol.length != 7) {
@@ -44,17 +51,21 @@ function onStart () {
 
 			}
 
+			// Removing message of no postings
 			document.getElementById("emptyMsg").style.display = "none";
 			document.body.style.backgroundColor = "#fcfdff";
 
+			// Adding verified tag for users signed in
 			if (document.getElementById("Gsignout").style.display == "block") {
 
 				addEmpl += (" (verified)");
 
 			}
 
+			//	Posting entities
 			$.post("https://janusjobs.herokuapp.com/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
+			//	Fetching entities
 			let descresp = await fetch("https://janusjobs.herokuapp.com/descList");
 			let jobresp = await fetch("https://janusjobs.herokuapp.com/jobList");
 			let linkresp = await fetch("https://janusjobs.herokuapp.com/linkList");
@@ -73,15 +84,19 @@ function onStart () {
 
 			document.getElementById("postedJobs").innerHTML = "<div>";
 
+			// Appending fetched lists to the body.
 			for(let i = 0; i < empList.length; i++) {
 
 				document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
 
 			}
 
-
 			document.getElementById("postedJobs").innerHTML += "</div>";
+
+			//	Reset Submit form
 			document.getElementById("submitEntity").reset();
+
+			// 	Remove form from screen
 			toggle_hidden("postJob");
 
 		}
@@ -93,6 +108,7 @@ function onStart () {
 
 	});
 
+	// Animated section revealing an about section and adjusting other screen elements
 	$("#aboutButton").click(async function () {
 
 		if (document.getElementById("aboutButton").value == "About Janus") {
@@ -113,6 +129,7 @@ function onStart () {
 
 	});
 
+	//	Searcing for specific jobs or titles
 	$("#searchbtn").click(async function () {
 
 		let descresp = await fetch("https://janusjobs.herokuapp.com/descList");
@@ -131,6 +148,7 @@ function onStart () {
 		let linkList = JSON.parse(linkbody);
 		let imgList = JSON.parse(imgbody);
 
+		// Keyword creation then used in searching jobs
 		let keyword = document.getElementById("headSearch").value;
 
 		document.getElementById("postedJobs").innerHTML = "<div>";
@@ -158,6 +176,7 @@ function onStart () {
 
 }
 
+//	Resuable function to toggle the height of a hidden element
 function toggle_hidden (div) {
 
 	let elem = document.getElementById(div);
@@ -180,7 +199,7 @@ function toggle_hidden (div) {
 
 }
 
-
+// Creation of custom placeholder if user is logged in
 function loggedCheck () {
 
 	if ($("#Gsignout").is(":visible")) {
@@ -199,7 +218,7 @@ function loggedCheck () {
 
 }
 
-
+//	On load fetches for when user first visits page
 window.addEventListener("load", async function () {
 
 	let descresp = await fetch("https://janusjobs.herokuapp.com/descList");
@@ -237,7 +256,7 @@ window.addEventListener("load", async function () {
 
 });
 
-
+// Mobile compatibility, toggling header if screen too small
 window.addEventListener("resize", function (e) {
 
 	let width = e.target.outerWidth;
@@ -272,6 +291,7 @@ window.addEventListener("resize", function (e) {
 
 });
 
+//	Burger menu to toggle header visibility, may be required after auto removal on mobile
 function revealMenu () {
 
 	if(document.getElementById("aboutButton").style.display == "none") {
@@ -310,6 +330,7 @@ function revealMenu () {
 
 }
 
+//	Google sign in with OATH 2.0 API and layout changing
 function onSignin (googleUser) {
 
 	let profile = googleUser.getBasicProfile();
@@ -328,6 +349,7 @@ function onSignin (googleUser) {
 
 }
 
+//	Google sign out and restoring screen to logged out layout
 function signOut () {
 
 	let auth2 = gapi.auth2.getAuthInstance();
@@ -341,6 +363,7 @@ function signOut () {
 
 }
 
+//	Checking inputted URL structure in form
 function testUrl (addUrl) {
 
 	let format = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
@@ -348,6 +371,7 @@ function testUrl (addUrl) {
 
 }
 
+//Activating function once DOM content has been loaded
 document.addEventListener("DOMContentLoaded", function () {
 
 	onStart();
