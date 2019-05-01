@@ -238,6 +238,9 @@ Here are the scripts used:
 ## Client-Side Documentation
 *** Note: In this assignment full client-side documentation and code explanation was not required. It was suggested that if included the documentation should just include details of client-side use and workings. ***
 
+### HTML validation
+I have validated the html of `index.html` as required. I would like to note however that if a html validator is ran on `global.html`, `app.js.html`, or  `ssindex.html`, they will results in some HTML errors due to the way they are constructed. They are created automatically from comments in `app.js` and work within one another along with relevant scripts, as a result HTML errors will be returned in the validator but the output will be as desired.
+
 ### Initial Loading
 When the page initially loads, the page will send GET requests for entities relating to job postings, if this request returns empty lists then there will be a message telling the viewer that no jobs have been posted yet and they will be encouraged to post the first.
 
