@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	onStart();
 
-	document.getElementById("manubutton").addEventListener("click", function() {
+	document.getElementById("menubutton").addEventListener("click", function () {
 
 		if(document.getElementById("aboutButton").style.display == "none") {
 
