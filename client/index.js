@@ -272,6 +272,44 @@ window.addEventListener("resize", function (e) {
 
 });
 
+function revealMenu () {
+
+	if(document.getElementById("aboutButton").style.display == "none") {
+
+		document.getElementById("aboutButton").style.display = "block";
+		document.getElementById("headSearch").style.display = "block";
+		document.getElementById("searchbtn").style.display = "block";
+		document.getElementById("newJob").style.display = "block";
+		if(document.getElementById("masthead").innerHTML.includes("Logged")) {
+
+			document.getElementById("Gsignout").style.display = "block";
+
+		}
+		else {
+
+			document.getElementById("Gsignin").style.display = "block";
+
+		}
+
+	}
+	else {
+
+		if(document.getElementById("newJob").innerHTML == "Cancel") {
+
+			toggle_hidden("postJob");
+
+		}
+		document.getElementById("aboutButton").style.display = "none";
+		document.getElementById("headSearch").style.display = "none";
+		document.getElementById("searchbtn").style.display = "none";
+		document.getElementById("newJob").style.display = "none";
+		document.getElementById("Gsignin").style.display = "none";
+		document.getElementById("Gsignout").style.display = "none";
+
+	}
+
+}
+
 function onSignin (googleUser) {
 
 	let profile = googleUser.getBasicProfile();
@@ -298,7 +336,7 @@ function signOut () {
 	document.getElementById("Gsignout").style.display = "none";
 	document.getElementById("postJob").style.display = "none";
 	document.getElementById("newJob").innerHTML = "Post a Job";
-	document.getElementById("masthead").innerHTML = "<div id='masthead'> <table style='width:100%'> <tr> <th style='width:10%'> <button id='menubutton' class='transparentButton'> <ion-icon name='reorder' size='large' style='color:white; zoom:1.6;'></ion-icon> </button> </th> <th style='width:90%'> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.PNG' id='logo' alt='logo'></a> <br></th> </tr> </table> </div>";
+	document.getElementById("masthead").innerHTML = "<div id='masthead'> <table style='width:100%'> <tr> <th style='width:10%'> <button id='menubutton' class='transparentButton'> <ion-icon name='reorder' size='large' style='color:white; zoom:1.6;' onclick='revealMenu();'></ion-icon> </button> </th> <th style='width:90%'> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.PNG' id='logo' alt='logo'></a> <br></th> </tr> </table> </div>";
 	document.getElementById("hiddenImg").innerHTML = "";
 
 }
@@ -311,47 +349,7 @@ function testUrl (addUrl) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-	console.log("testing");
 
 	onStart();
-
-	document.getElementById("menubutton").addEventListener("click", function () {
-		console.log("hi")
-
-		if(document.getElementById("aboutButton").style.display == "none") {
-
-			document.getElementById("aboutButton").style.display = "block";
-			document.getElementById("headSearch").style.display = "block";
-			document.getElementById("searchbtn").style.display = "block";
-			document.getElementById("newJob").style.display = "block";
-			if(document.getElementById("masthead").innerHTML.includes("Logged")) {
-
-				document.getElementById("Gsignout").style.display = "block";
-
-			}
-			else {
-
-				document.getElementById("Gsignin").style.display = "block";
-
-			}
-
-		}
-		else {
-
-			if(document.getElementById("newJob").innerHTML == "Cancel") {
-
-				toggle_hidden("postJob");
-
-			}
-			document.getElementById("aboutButton").style.display = "none";
-			document.getElementById("headSearch").style.display = "none";
-			document.getElementById("searchbtn").style.display = "none";
-			document.getElementById("newJob").style.display = "none";
-			document.getElementById("Gsignin").style.display = "none";
-			document.getElementById("Gsignout").style.display = "none";
-
-		}
-
-	});
 
 });
