@@ -272,7 +272,7 @@ window.addEventListener("resize", function (e) {
 
 });
 
-document.getElementById("menubutton").addEventListener("click", function() {
+document.getElementById("menuicon").addEventListener("click", function() {
 
 	if(document.getElementById("aboutButton").style.display == "none") {
 
@@ -336,7 +336,7 @@ function signOut () {
 	document.getElementById("Gsignout").style.display = "none";
 	document.getElementById("postJob").style.display = "none";
 	document.getElementById("newJob").innerHTML = "Post a Job";
-	document.getElementById("masthead").innerHTML = "<div id='masthead'> <table style='width:100%'> <tr> <th style='width:10%'> <button id='menubutton' class='transparentButton'> <ion-icon name='reorder' size='large' style='color:white; zoom:1.6;' onclick='revealMenu();'></ion-icon> </button> </th> <th style='width:90%'> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.PNG' id='logo' alt='logo'></a> <br></th> </tr> </table> </div>";
+	document.getElementById("masthead").innerHTML = "<div id='masthead'> <table style='width:100%'> <tr> <th style='width:10%'> <button id='menubutton' class='transparentButton'> <ion-icon name='reorder' size='large' style='color:white; zoom:1.6;'></ion-icon> </button> </th> <th style='width:90%'> <a class='navbar-brand' href='#' id='headerTitle'><img src='IMG_3383.PNG' id='logo' alt='logo'></a> <br></th> </tr> </table> </div>";
 	document.getElementById("hiddenImg").innerHTML = "";
 
 }
