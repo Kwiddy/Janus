@@ -102,8 +102,8 @@ passport.deserializeUser(function (obj, done) {
 // Session control with ClientID and clientSecret (Authorisation)
 passport.use(new GoogleStrategy({
 	clientID: "1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com",
-	clientSecret: "_2gzvWyy4Mt_FK6c3KyzAzex",
-	callbackURL: "https://janusjobs.herokuapp.com/auth/google/callback"
+	clientSecret: process.env.CLIENT_SECRET,
+	callbackURL: process.env.CALLBACKURL
 	// callbackURL: "localhost:8090" //for use with local testing
 },
 function (accessToken, refreshToken, profile, done) {
@@ -116,6 +116,7 @@ function (accessToken, refreshToken, profile, done) {
 // Initialising Passport Session
 app.use(passport.initialize());
 app.use(passport.session());
+
 ```
 
 The code above then works with the following two GET requests to provide Google account login and authentication with integrated sessions:
