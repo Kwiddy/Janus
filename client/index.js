@@ -311,6 +311,7 @@ function testUrl (addUrl) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+	console.log("testing");
 
 	onStart();
 
