@@ -5,7 +5,7 @@
 ## General Information
 [JanusJobs](https://pip.pypa.io/en/stable/) is a job advertising site, allowing users to sign in with their Google Accounts and advertise their jobs on a message-board like site. These advertisements will have only crucial information such as employer, title, and job description, with profile images and a link to the employer's site or primary advertisement when clicked. The API uses GET and POST requests to handle the different entities.
 
-The site is running on *herokuapp* at: [https://janusjobs.herokuapp.com/](https://janusjobs.herokuapp.com/), to test locally you would need to generate your own CLIENT_SECRET in a **.env** file, the port that would be in use is port 8090.
+The site is running on *herokuapp* at: [https://janusjobs.herokuapp.com/](https://janusjobs.herokuapp.com/). **To test locally:** you would need to generate your own CLIENT_SECRET in a **.env** file, the port that would be in use is port 8090.
 
 ## Server-Side Documentation
 ***Note: This is a summary, for full server-side code documentation and details on the testing used please see:***
@@ -149,6 +149,39 @@ app.get("/auth/google/callback",
 ```
 The first of these GET requests returns user profile information, whereas the second occurs when call back and therefore a redirect back to the page is necessary.
 
+### Environment Variables
+I have a couple of different variables in a *.env* file (this has not been submitted), these are:
+```
+CLIENT_SECRET
+CALLBACKURL
+```
+I have made the Environment Variable `CALLBACKURL` so that whilst the site is online at herokuapp, the callbackURL returned in the Google Oauth 2.0 authentication works with both the online site as well as with *localhost* when using port 8090.
+
+The variable `CLIENT_SECRET` should be kept private for security reasons and therefore I have not included the **.env** file in either this submission nor on my Github repository. To circumvent this, if the site was to be tested not through herokuapp but rather through localhost then the tester would have to create their own Client Secret with the Google Dev Tools.
+
+In order to integrate these variables into my site, I first had to install the `dotenv` package, and then setup my *app.js* with the following line:
+``` javascript
+require("dotenv").config();
+```
+With `dotenv` configured, I can now use the following code:
+``` javascript
+passport.use(new GoogleStrategy({
+	clientID: "1042353776096-b40nc822i1clrtc12gc7tiu3g57hin85.apps.googleusercontent.com",
+	clientSecret: process.env.CLIENT_SECRET,
+	callbackURL: process.env.CALLBACKURL
+	// callbackURL: "localhost:8090" //for use with local testing
+},
+function (accessToken, refreshToken, profile, done) {
+
+	return done(null, {user:profile, accessToken:accessToken, refreshToken:refreshToken});
+
+}
+));
+```
+Where the *clientSecret* and *callbackURL* are linked to `process.env` instead of explicitely stating the secret and the URL.
+
+To summarise, I have implemented the chosen Environment Variables above in order to provide additional security when logging in to my site, as well as enabling localhost testing without the need to change any of the source code provided.
+
 ### package.json
 This file ensures that all required dependencies are supplied on:
 ```
@@ -158,14 +191,15 @@ The dependencies required are as follows:
 ```
 "dependencies": {
   "body-parser": "^1.18.3",
+  "dotenv": "^7.0.0",
   "express": "^4.16.4",
   "express-session": "^1.16.1",
   "ionicons": "^4.5.6",
+  "jest": "^24.7.1",
   "jquery": "^3.4.0",
   "passport": "^0.4.0",
   "passport-google-oauth20": "^2.0.0",
-  "uuidv4": "^4.0.0",
-  "jest": "^24.7.1"
+  "uuidv4": "^4.0.0"
 },
 ```
 With the following devDependencies used (for more information on the eslint testing used please see **.eslintrc.js**):
