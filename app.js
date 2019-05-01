@@ -17,7 +17,7 @@ let imgList = []; // stores profile images
 /** Attempts a General GET request from the Webpage
   * @name GET /
   * @path {GET} /
-  * @code {200} If response is successful
+  * @code {200} If response is successful then the 200 OK code is returned
 */
 app.get("/", (req, res) => {
 
@@ -25,10 +25,11 @@ app.get("/", (req, res) => {
 
 });
 
-/** Attempts a GET request to the list of employers from the Webpage
+/** Attempts a GET request to the list of employers from the Webpage.
+	* This list of employers may partially contain account usernames instead of inputted employers, if an account username then the item will have "(verified)" next to it when posted.
   * @name GET /empList
   * @path {GET} /empList
-  * @code {200} If response is successful
+  * @code {200} If response is successful then the 200 OK code is returned
 */
 app.get("/empList", function (req, res) {
 
@@ -39,7 +40,7 @@ app.get("/empList", function (req, res) {
 /** Attempts a GET request to the list of job titles from the Webpage
   * @name GET /jobList
   * @path {GET} /jobList
-  * @code {200} If response is successful
+  * @code {200} If response is successful then the 200 OK code is returned
 */
 app.get("/jobList", function (req, res) {
 
@@ -48,9 +49,10 @@ app.get("/jobList", function (req, res) {
 });
 
 /** Attempts a GET request to the list of job descriptions from the Webpage
+	* These job descriptions will be limited in size thanks to a throw error in index.js
   * @name GET /descList
   * @path {GET} /descList
-  * @code {200} If response is successful
+  * @code {200} If response is successful then the 200 OK code is returned
 */
 app.get("/descList", function (req, res) {
 
@@ -59,9 +61,10 @@ app.get("/descList", function (req, res) {
 });
 
 /** Attempts a GET request for the list of links to jobs from the Webpage
+	* Each of these URLs should be in the correct form thanks to the regex testUrl function in index.js
   * @name GET /linkList
   * @path {GET} /linkList
-  * @code {200} If response is successful
+  * @code {200} If response is successful then the 200 OK code is returned
 */
 app.get("/linkList", function (req, res) {
 
@@ -72,7 +75,7 @@ app.get("/linkList", function (req, res) {
 /** Attempts a GET request for the list of profile images from the Webpage
   * @name GET /imgList
   * @path {GET} /imgList
-  * @code {200} If response is successful
+  * @code {200} If response is successful then the 200 OK code is returned
 */
 app.get("/imgList", function (req, res) {
 
@@ -84,7 +87,7 @@ app.get("/imgList", function (req, res) {
   * employer, job title, job description, job link, and profile image.
   * @name POST /add
   * @path {POST} /add
-  * @code {200} If sending is successful
+  * @code {200} Creates a dummy job and attempts to post, sends 200 OK code if succesful response
 */
 app.post("/add", function (req, res) {
 
@@ -142,7 +145,9 @@ app.use(passport.session());
 /** Attempts a GET request from GOOGLE OAUTH API through passport
   * @name GET /auth/google
   * @path {GET} /auth/google
-	* @code {302} If profile found
+	* @auth This route requires Google and Passport authentication. The google authentication is required for getting profile information and the passport authentication is used in sessions intregration as described in the server-side section of README.md
+	* @code {302} If profile is found
+	* @code {400} If a manual GET request for /auth/google is made, by requesting the URL in the search engine, then the Google API will return a 400 error due to redirect_uri_mistmatch. This is because the URI in the request, /auth/google/callback, does not match the URIs authorized in the OAuth client
 */
 app.get("/auth/google",
 	passport.authenticate("google", { scope: ["profile"] }),
@@ -155,7 +160,9 @@ app.get("/auth/google",
 /** Attempts a GET request from GOOGLE OAUTH API Callback through passport
   * @name GET /auth/google/callback
   * @path {GET} /auth/google/callback
-	* @code {302} If redirect found
+	* @auth This route requires Google and Passport authentication, the passport integration is required for sessions integration with the site as described in the server-side section of the documentation in README.md
+	* @code {302} The resource requested has been redirected to the correct URL upon callback
+	* @code {400} If a manual GET request for /auth/google/callback is made, by requesting the URL in the search engine, then the Google API will return a 400 error due to invalid_request as a result of a missing required scope parameter
 */
 app.get("/auth/google/callback",
 	passport.authenticate("google", { failureRedirect: "/" }),
