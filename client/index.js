@@ -63,14 +63,14 @@ function onStart () {
 			}
 
 			//	Posting entities
-			$.post("https://janusjobs.herokuapp.com/add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
+			$.post("./add", {addEmpl:addEmpl , addJob:addJob, addDesc:addDesc, addURL:addURL, addImg:addImg});
 
 			//	Fetching entities
-			let descresp = await fetch("https://janusjobs.herokuapp.com/descList");
-			let jobresp = await fetch("https://janusjobs.herokuapp.com/jobList");
-			let linkresp = await fetch("https://janusjobs.herokuapp.com/linkList");
-			let imgresp = await fetch("https://janusjobs.herokuapp.com/imgList");
-			let empresp = await fetch("https://janusjobs.herokuapp.com/empList");
+			let descresp = await fetch("./descList");
+			let jobresp = await fetch("./jobList");
+			let linkresp = await fetch("./linkList");
+			let imgresp = await fetch("./imgList");
+			let empresp = await fetch("./empList");
 			let empbody = await empresp.text();
 			let descbody = await descresp.text();
 			let jobbody = await jobresp.text();
@@ -132,45 +132,53 @@ function onStart () {
 	//	Searcing for specific jobs or titles
 	$("#searchbtn").click(async function () {
 
-		let descresp = await fetch("https://janusjobs.herokuapp.com/descList");
-		let jobresp = await fetch("https://janusjobs.herokuapp.com/jobList");
-		let linkresp = await fetch("https://janusjobs.herokuapp.com/linkList");
-		let imgresp = await fetch("https://janusjobs.herokuapp.com/imgList");
-		let empresp = await fetch("https://janusjobs.herokuapp.com/empList");
-		let empbody = await empresp.text();
-		let descbody = await descresp.text();
-		let jobbody = await jobresp.text();
-		let linkbody = await linkresp.text();
-		let imgbody = await imgresp.text();
-		let empList = JSON.parse(empbody);
-		let descriptionsList = JSON.parse(descbody);
-		let jobList = JSON.parse(jobbody);
-		let linkList = JSON.parse(linkbody);
-		let imgList = JSON.parse(imgbody);
+		try {
 
-		// Keyword creation then used in searching jobs
-		let keyword = document.getElementById("headSearch").value;
+			let descresp = await fetch("./descList");
+			let jobresp = await fetch("./jobList");
+			let linkresp = await fetch("./linkList");
+			let imgresp = await fetch("./imgList");
+			let empresp = await fetch("./empList");
+			let empbody = await empresp.text();
+			let descbody = await descresp.text();
+			let jobbody = await jobresp.text();
+			let linkbody = await linkresp.text();
+			let imgbody = await imgresp.text();
+			let empList = JSON.parse(empbody);
+			let descriptionsList = JSON.parse(descbody);
+			let jobList = JSON.parse(jobbody);
+			let linkList = JSON.parse(linkbody);
+			let imgList = JSON.parse(imgbody);
 
-		document.getElementById("postedJobs").innerHTML = "<div>";
+			// Keyword creation then used in searching jobs
+			let keyword = document.getElementById("headSearch").value;
 
-		for(let i = 0; i < empList.length; i++) {
+			document.getElementById("postedJobs").innerHTML = "<div>";
 
-			if(empList[i].toUpperCase().includes(keyword.toUpperCase())) {
+			for(let i = 0; i < empList.length; i++) {
 
-				document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+				if(empList[i].toUpperCase().includes(keyword.toUpperCase())) {
+
+					document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+
+				}
+				else if(jobList[i].toUpperCase().includes(keyword.toUpperCase())) {
+
+					document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+
+				}
 
 			}
-			else if(jobList[i].toUpperCase().includes(keyword.toUpperCase())) {
 
-				document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+			document.getElementById("postedJobs").innerHTML += "</div>";
 
-			}
+			document.getElementById("headSearch").value = "";
+
+		} catch (err) {
+
+			alert(err);
 
 		}
-
-		document.getElementById("postedJobs").innerHTML += "</div>";
-
-		document.getElementById("headSearch").value = "";
 
 	});
 
@@ -221,36 +229,44 @@ function loggedCheck () {
 //	On load fetches for when user first visits page
 window.addEventListener("load", async function () {
 
-	let descresp = await fetch("https://janusjobs.herokuapp.com/descList");
-	let jobresp = await fetch("https://janusjobs.herokuapp.com/jobList");
-	let linkresp = await fetch("https://janusjobs.herokuapp.com/linkList");
-	let imgresp = await fetch("https://janusjobs.herokuapp.com/imgList");
-	let empresp = await fetch("https://janusjobs.herokuapp.com/empList");
-	let empbody = await empresp.text();
-	let descbody = await descresp.text();
-	let jobbody = await jobresp.text();
-	let linkbody = await linkresp.text();
-	let imgbody = await imgresp.text();
-	let empList = JSON.parse(empbody);
-	let descriptionsList = JSON.parse(descbody);
-	let jobList = JSON.parse(jobbody);
-	let linkList = JSON.parse(linkbody);
-	let imgList = JSON.parse(imgbody);
+	try {
 
-	document.getElementById("postedJobs").innerHTML = "<div>";
+		let descresp = await fetch("./descList");
+		let jobresp = await fetch("./jobList");
+		let linkresp = await fetch("./linkList");
+		let imgresp = await fetch("./imgList");
+		let empresp = await fetch("./empList");
+		let empbody = await empresp.text();
+		let descbody = await descresp.text();
+		let jobbody = await jobresp.text();
+		let linkbody = await linkresp.text();
+		let imgbody = await imgresp.text();
+		let empList = JSON.parse(empbody);
+		let descriptionsList = JSON.parse(descbody);
+		let jobList = JSON.parse(jobbody);
+		let linkList = JSON.parse(linkbody);
+		let imgList = JSON.parse(imgbody);
 
-	for(let i = 0; i < empList.length; i++) {
+		document.getElementById("postedJobs").innerHTML = "<div>";
 
-		document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
+		for(let i = 0; i < empList.length; i++) {
 
-	}
+			document.getElementById("postedJobs").innerHTML += "<a href='" + linkList[i] + "' class='jobLink'> <div class='jobsEntries'> <b> " + imgList[i] + empList[i] + "</b> - " + jobList[i] + "<br> <span>" + descriptionsList[i] + "</span> </div> </a>";
 
-	document.getElementById("postedJobs").innerHTML += "</div>";
+		}
 
-	if(document.getElementById("postedJobs").innerHTML == "<div></div>") {
+		document.getElementById("postedJobs").innerHTML += "</div>";
 
-		document.getElementById("emptyMsg").style.display = "block";
-		document.body.style.backgroundColor = "#e0e0e0";
+		if(document.getElementById("postedJobs").innerHTML == "<div></div>") {
+
+			document.getElementById("emptyMsg").style.display = "block";
+			document.body.style.backgroundColor = "#e0e0e0";
+
+		}
+
+	} catch (err) {
+
+		alert(err);
 
 	}
 
@@ -371,7 +387,7 @@ function testUrl (addUrl) {
 
 }
 
-//Activating function once DOM content has been loaded
+// Activating function once DOM content has been loaded
 document.addEventListener("DOMContentLoaded", function () {
 
 	onStart();
