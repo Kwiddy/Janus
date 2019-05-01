@@ -1,5 +1,9 @@
 # Janus
-My site has succesful cloud deployment and can be available at: [**https://janusjobs.herokuapp.com/**](https://janusjobs.herokuapp.com/)
+My site has successful cloud deployment and can be available at: [**https://janusjobs.herokuapp.com/**](https://janusjobs.herokuapp.com/)
+
+Furthermore, for an online version of this README document please visit:
+
+[https://janusjobs.herokuapp.com/README.html](https://janusjobs.herokuapp.com/README.html)
 
 
 ## General Information
@@ -8,7 +12,9 @@ My site has succesful cloud deployment and can be available at: [**https://janus
 The site is running on *herokuapp* at: [https://janusjobs.herokuapp.com/](https://janusjobs.herokuapp.com/). **To test locally:** you would need to generate your own CLIENT_SECRET in a **.env** file, the port that would be in use is port 8090.
 
 ## Server-Side Documentation
-***Note: This is a summary, for more detailed documentation on the various methods used please visit:***
+***Note: This is a summary, for more detailed documentation on the various methods used please visit:
+
+[https://janusjobs.herokuapp.com/ssindex.html](https://janusjobs.herokuapp.com/ssindex.html)***
 
 ### Server Degradation
 All of my fetch statements are encapsulated in the form:
