@@ -1,14 +1,14 @@
 # Janus
-[Click Here to Visit the Site](https://janusjobs.herokuapp.com/)
+My site has succesful cloud deployment and can be available at: [**https://janusjobs.herokuapp.com/**](https://janusjobs.herokuapp.com/)
 
 
 ## General Information
-[JanusJobs](https://pip.pypa.io/en/stable/) is a job advertising site, allowing users to sign in with their Google Accounts and advertise their jobs on a message-board like site. These advertisements will have only crucial information such as employer, title, and job description, with profile images and a link to the employer's site or primary advertisement when clicked. The API uses GET and POST requests to handle the different entities.
+[JanusJobs](https://pip.pypa.io/en/stable/) is a single page job advertising site, allowing users to sign in with their Google Accounts and advertise their jobs on a message-board like site. These advertisements will have only crucial information such as employer, title, and job description, with profile images and a link to the employer's site or primary advertisement when clicked. The API uses GET and POST requests to handle the different entities.
 
 The site is running on *herokuapp* at: [https://janusjobs.herokuapp.com/](https://janusjobs.herokuapp.com/). **To test locally:** you would need to generate your own CLIENT_SECRET in a **.env** file, the port that would be in use is port 8090.
 
 ## Server-Side Documentation
-***Note: This is a summary, for full server-side code documentation and details on the testing used please see:***
+***Note: This is a summary, for more detailed documentation on the various methods used please visit:***
 
 ### Server Degradation
 All of my fetch statements are encapsulated in the form:
@@ -38,7 +38,7 @@ let myParser = require("body-parser");
 let app = express();
 ```
 
-Following this, in *app.js* I create the lists that will store the separate entities when required. These lists are:
+Following this, in *app.js* I create the lists that will store the several different separate entities when required. A REST API provides each entity with appropriate GET/POST meoth.ds These lists are:
 ``` javascript
 let empList = []; //stores employers
 let descriptions = []; //stores job descriptions
@@ -253,8 +253,31 @@ The navbar, excluding the logo and collapsible menu button, is sticky, meaning t
 ### Searching Jobs
 The search bar allows the user to search for jobs with any keywords or strings within the employer name or the job title. Clicking "Search All", will reveal the search results. Clicking "Search All" again when nothing is in the search bar will go back to the homepage and show all of the jobs that have been posted.
 
-### Viewports
+### Viewports and Responsiveness
 The webpage is designed such that no matter the size of the viewport the page should be easily readable by the user. As the screen size reduces the navbar slowly folds in on itself until a predetermined viewport size limit is reached. At this point, the search options and buttons in the navbar will disappear automatically and can be expanded again either manually by pressing the expand burger menu button or automatically by increasing the viewport size again.
+
+Other elements also change with viewport size, for example, the width of posted jobs, and the size of the logo in the header to an extent.
+
+
+## Testing
+The source code contains:
+```
+app.test.js
+```
+and
+```
+.eslintrc.js
+```
+These can be run with `npm start`. As required the `.eslintrc.js` file is a pretest and operates on `app.js` and `server.js`, returning no errors with the extensive rules provided in the `eslintrc.js` specification. I should note that whilst a large number of rules were used, I did turn off the following for various reasons:
+```
+"no-console": "off",
+"no-useless-escape": "off",
+```
+By removing `no-console`, it is easier to test the workings and functionality of my code without incurring eslint errors or warnings.
+
+`no-useless-escape` had to be removed due to some regex in my code testing the form of inputted URLs, eslint recognised some of the end characters of the regex test as useless where in fact they were necessary to validate the url.
+
+As for `app.test.js`, my code has several tests which are all passed and explained in further detail in the link at the top of the server-side documentation section of this README.md. The testing uses a variety of HTTP codes and also includes checking content-type. The test should return good coverage.
 
 ## External API (GOOGLE OAUTH 2.0)
 The accounts system for the site is handled by the external Google Oauth 2.0 API, allowing users to log into their google accounts, the data from these accounts are then used in several cases in the site.
