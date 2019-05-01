@@ -4,7 +4,7 @@
   "description": "Webpage to submit job postings",
   "main": "index.js",
   "scripts": {
-    "pretest": "eslint app.js server.js client/index.js --fix",
+    "pretest": "eslint app.js server.js --fix",
     "test": "jest --coverage",
     "start": "node server.js",
     "dev": "nodemon index.js"
