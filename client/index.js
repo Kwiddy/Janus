@@ -315,6 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	onStart();
 
 	document.getElementById("menubutton").addEventListener("click", function () {
+		console.log("hi")
 
 		if(document.getElementById("aboutButton").style.display == "none") {
 
