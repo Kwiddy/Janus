@@ -272,7 +272,7 @@ window.addEventListener("resize", function (e) {
 
 });
 
-function revealMenu () {
+document.getElementById("menubutton").addEventListener("click", function() {
 
 	if(document.getElementById("aboutButton").style.display == "none") {
 
@@ -308,7 +308,7 @@ function revealMenu () {
 
 	}
 
-}
+});
 
 function onSignin (googleUser) {
 
